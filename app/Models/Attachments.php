@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Attachments extends Model
 {
     use HasFactory;
+
     protected $table = 'attachments';
+
     public $timestamps = true;
 }

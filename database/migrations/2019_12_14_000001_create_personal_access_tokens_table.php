@@ -13,13 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('sections', function (Blueprint $table) {
+        Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
+            $table->morphs('tokenable');
             $table->string('name');
-            $table->bigInteger('course_id')->unsigned();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
-            $table->foreign('course_id')->references('id')->on('courses');
+            $table->string('token', 64)->unique();
+            $table->text('abilities')->nullable();
+            $table->timestamp('last_used_at')->nullable();
+            $table->timestamp('expires_at')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -30,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sections');
+        Schema::dropIfExists('personal_access_tokens');
     }
 };
