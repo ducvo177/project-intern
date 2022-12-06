@@ -9,17 +9,15 @@ class CourseUser extends Model
 {
     use HasFactory;
 
-    protected $table = 'course_user';
-
     public $timestamps = true;
 
     public function users()
     {
-        return $this->belongsTo('App\Users', 'user_id');
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function courses()
     {
-        return $this->belongsTo('App\Courses', 'course_id');
+        return $this->belongsTo('App\Course', 'course_id');
     }
 }
