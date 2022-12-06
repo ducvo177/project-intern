@@ -9,15 +9,32 @@ class Lesson extends Model
 {
     use HasFactory;
 
-    public $timestamps = true;
 
+       /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'video_type',
+        'video_url',
+        'time',
+        'preview',
+        'content',
+    ];
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+    public $timestamps = true;
     public function courses()
     {
-        return $this->belongsTo('App\Course', 'course_id');
+        return $this->belongsTo(Course::class);
     }
 
     public function sections()
     {
-        return $this->belongsTo('App\Section', 'section_id');
+        return $this->belongsTo(Section::class);
     }
 }
