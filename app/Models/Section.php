@@ -5,11 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Users extends Model
+class Section extends Model
 {
     use HasFactory;
 
-    protected $table = 'users';
-
     public $timestamps = true;
+
+    public function courses()
+    {
+        return $this->belongsTo('App\Course', 'course_id');
+    }
 }
