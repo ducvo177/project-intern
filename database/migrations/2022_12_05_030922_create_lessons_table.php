@@ -22,9 +22,8 @@ return new class extends Migration
             $table->string('video_url');
             $table->string('time');
             $table->tinyInteger('preview');
-            $table->text('context');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->text('content');
+            $table->timestamps();
             $table->foreign('section_id')->references('id')->on('sections');
         });
     }

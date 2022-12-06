@@ -22,8 +22,7 @@ return new class extends Migration
             $table->string('extention');
             $table->string('mime_type');
             $table->integer('size')->unsigned();
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
         });
     }
 

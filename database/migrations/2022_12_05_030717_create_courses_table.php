@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('old_price', 17, 2);
             $table->bigInteger('created_by');
             $table->bigInteger('category_id')->unsigned();
-            $table->integer('lessions');
+            $table->integer('lessons');
             $table->integer('view_count');
             $table->json('benefits');
             $table->json('fqa');
@@ -33,8 +33,7 @@ return new class extends Migration
             $table->string('meta_title');
             $table->string('meta_desc');
             $table->string('meta_keyword');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
