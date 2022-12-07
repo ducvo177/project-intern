@@ -17,14 +17,14 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => fake()->unique()->name(),
+            'name' => fake()->unique()->lastName(),
             'slug'=>fake()->unique()->slug(),
-            'parent'=>10,
-            'created_by'=>10,
+            'parent'=>random_int(0,100),
+            'created_by'=>random_int(0,100),
             'content'=>fake()->text(),
-            'meta_title'=>fake()->name(),
-            'meta_desc'=>fake()->name(),
-            'meta_keyword'=>fake()->name(),
+            'meta_title'=>fake()->title(),
+            'meta_desc'=>fake()->text(),
+            'meta_keyword'=>fake()->firstName(),
             'created_at' => now(),
             'updated_at' => now(),
         ];

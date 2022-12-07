@@ -18,11 +18,11 @@ class AttachmentFactory extends Factory
     {
         return [
             'file_path' => fake()->filePath(),
-            'attachable_type' => fake()->name(),
+            'attachable_type' => fake()->fileExtension(),
             'file_name' => fake()->name(),
-            'attachable_id' =>"30248",
+            'attachable_id' =>random_int(0, 20),
             'extention' => fake()->fileExtension(),
-            'mime_type' => "type",
+            'mime_type' => fake()->mimeType(),
             'size' => random_int(0, 10),
             'created_at' => now(),
             'updated_at' => now(),
