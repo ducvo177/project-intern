@@ -8,16 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class CourseUser extends Model
 {
     use HasFactory;
-
-    public $timestamps = true;
-
     public function users()
     {
-        return $this->belongsTo('App\User', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function courses()
     {
-        return $this->belongsTo('App\Course', 'course_id');
+        return $this->belongsTo(Course::class);
     }
 }

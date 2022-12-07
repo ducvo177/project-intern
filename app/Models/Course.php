@@ -9,11 +9,20 @@ class Course extends Model
 {
     use HasFactory;
 
-
-    public $timestamps = true;
-
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
     public function courses()
     {
-        return $this->belongsTo('App\Category', 'category_id');
+        return $this->hasMany(CourseUser::class);
+    }
+    public function sections()
+    {
+        return $this->hasMany(Section::class);
+    }
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
     }
 }
