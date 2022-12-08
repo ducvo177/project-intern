@@ -10,7 +10,7 @@ class Lesson extends Model
     use HasFactory;
 
 
-       /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -27,7 +27,6 @@ class Lesson extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    public $timestamps = true;
     public function courses()
     {
         return $this->belongsTo(Course::class);

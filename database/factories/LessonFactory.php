@@ -22,7 +22,7 @@ class LessonFactory extends Factory
             'name' => fake()->unique()->name(),
             'course_id'=>fake()->randomElement(Course::pluck('id')),
             'section_id'=>fake()->randomElement(Section::pluck('id')),
-            'video_type'=>random_int(0,10),
+            'video_type'=>random_int(0, 10),
             'video_url'=>fake()->url(),
             'time'=>fake()->date(),
             'preview'=>fake()->boolean(),

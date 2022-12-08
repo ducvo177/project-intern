@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Attachment extends Model
 {
     use HasFactory;
-       /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -26,5 +26,4 @@ class Attachment extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    public $timestamps = true;
 }

@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-   /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
+    /**
+      * The attributes that are mass assignable.
+      *
+      * @var array<int, string>
+      */
     protected $fillable = [
         'name',
         'slug',
@@ -36,7 +36,6 @@ class Course extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    public $timestamps = true;
 
     public function category()
     {

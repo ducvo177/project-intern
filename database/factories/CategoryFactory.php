@@ -19,8 +19,8 @@ class CategoryFactory extends Factory
         return [
             'name' => fake()->unique()->lastName(),
             'slug'=>fake()->unique()->slug(),
-            'parent'=>random_int(0,100),
-            'created_by'=>random_int(0,100),
+            'parent'=>random_int(0, 100),
+            'created_by'=>random_int(0, 100),
             'content'=>fake()->text(),
             'meta_title'=>fake()->title(),
             'meta_desc'=>fake()->text(),

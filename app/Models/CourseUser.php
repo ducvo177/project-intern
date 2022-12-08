@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class CourseUser extends Model
 {
     use HasFactory;
-        /**
+    protected $table = "course_user";
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -20,7 +21,7 @@ class CourseUser extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    public $timestamps = true;
+
 
     public function users()
     {

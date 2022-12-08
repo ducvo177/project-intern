@@ -49,7 +49,6 @@ class User extends Authenticatable
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
-    public $timestamps = true;
     public function courses()
     {
         return $this->hasMany(CourseUser::class);
