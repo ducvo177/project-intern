@@ -14,11 +14,14 @@
                         </div>
                     @endif
 
-                    {{ __('Before proceeding, please check your email for a verification link.') }}
-                    {{ __('If you did not receive the email') }},
-                    <form class="d-inline" method="POST" action="{{ route('verification.resend') }}">
+                    <h3 class="text-center">{{ __('Before proceeding, please check your email for a verification link.') }}</h3>
+                    <br/>
+                    <img class="img-responsive w-25 mx-auto d-block" src="{{ asset('/assets/img/email.webp')}}">
+                    <h3 class="text-center">{{ __('If you did not receive the email') }}</h3>
+                    <br/>
+                    <form class="w-100" method="POST" action="{{ route('verification.resend') }}">
                         @csrf
-                        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">{{ __('click here to request another') }}</button>.
+                        <button type="submit" class="btn btn-primary float-right mx-auto d-block">{{ ('Resend email') }}</button>.
                     </form>
                 </div>
             </div>
