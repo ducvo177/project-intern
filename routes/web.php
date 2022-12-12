@@ -19,8 +19,6 @@ Route::get('/', function () {
 });
 
 Auth::routes(['verify' => true]);
-Route::prefix('home')->group(function () {
-});
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
 Route::prefix('admin')->group(function () {

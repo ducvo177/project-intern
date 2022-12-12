@@ -5,12 +5,12 @@ namespace App\Notifications;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
-use Illuminate\Auth\Notifications\VerifyEmail;
+use Illuminate\Notifications\Notification;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\URL;
 
-class VerifyAccount extends VerifyEmail implements ShouldQueue
+class VerifyAccount extends Notification implements ShouldQueue
 {
     use Queueable;
 

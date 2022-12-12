@@ -62,6 +62,8 @@ class LoginController extends Controller
             } else {
                 return $this->redirectTo('home');
             }
+        } else {
+            return $this->redirectTo('login');
         }
     }
 }
