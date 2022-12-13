@@ -34,6 +34,7 @@ class VerifyAccount extends Notification implements ShouldQueue
     {
         return ['mail'];
     }
+
     protected function verificationUrl($notifiable)
     {
         return URL::temporarySignedRoute(
@@ -45,6 +46,7 @@ class VerifyAccount extends Notification implements ShouldQueue
             ]
         );
     }
+
     /**
      * Get the mail representation of the notification.
      *
@@ -57,18 +59,5 @@ class VerifyAccount extends Notification implements ShouldQueue
         $url=$this->verificationUrl($notifiable);
         return (new MailMessage)
         ->markdown('mail.verifymail', ['url'=>$url,'name'=>$name]);
-    }
-
-    /**
-     * Get the array representation of the notificat    ion.
-     *
-     * @param  mixed  $notifiable
-     * @return array
-     */
-    public function toArray($notifiable)
-    {
-        return [
-            //
-        ];
     }
 }
