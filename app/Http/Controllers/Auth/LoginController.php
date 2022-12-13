@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
 {
@@ -34,7 +35,13 @@ class LoginController extends Controller
      *
      * @return void
      */
-
+    /**
+     * Handle an authentication attempt.
+     *
+     * @param  \Illuminate\Http\Request $request
+     *
+     * @return Response
+     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -43,8 +50,8 @@ class LoginController extends Controller
     protected function redirectTo()
     {
         if (Auth::user()->isAdmin()) {
-            return redirect('admin');
+            return url('/admin');
         }
-        return redirect('home');
+        return url('/home');
     }
 }
