@@ -21,6 +21,7 @@ return new class extends Migration {
             $table->timestamp('email_verified_at')->nullable();
             $table->tinyInteger('type');
             $table->timestamps();
+            $table->rememberToken();
         });
     }
 

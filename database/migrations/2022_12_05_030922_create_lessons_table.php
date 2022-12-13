@@ -22,8 +22,7 @@ return new class extends Migration {
             $table->string('time');
             $table->tinyInteger('preview');
             $table->text('content');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->foreign('section_id')->references('id')->on('sections');
         });
     }

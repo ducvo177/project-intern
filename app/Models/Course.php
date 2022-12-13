@@ -8,34 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Course extends Model
 {
     use HasFactory;
-    /**
-      * The attributes that are mass assignable.
-      *
-      * @var array<int, string>
-      */
-    protected $fillable = [
-        'name',
-        'slug',
-        'link',
-        'price',
-        'old_price',
-        'created_by',
-        'lessons',
-        'view_count',
-        'benefits',
-        'fqa',
-        'is_feature',
-        'is_online',
-        'description',
-        'content',
-        'meta_title',
-        'meta_desc',
-        'meta_keyword',
-    ];
-    protected $casts = [
-        'created_at' => 'datetime',
-        'updated_at' => 'datetime',
-    ];
 
     public function category()
     {

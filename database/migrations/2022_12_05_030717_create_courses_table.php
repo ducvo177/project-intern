@@ -32,8 +32,7 @@ return new class extends Migration {
             $table->string('meta_title');
             $table->string('meta_desc');
             $table->string('meta_keyword');
-            $table->timestamp('created_at');
-            $table->timestamp('updated_at');
+            $table->timestamps();
             $table->foreign('category_id')->references('id')->on('categories');
         });
     }
