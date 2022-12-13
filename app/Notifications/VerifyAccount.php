@@ -15,16 +15,6 @@ class VerifyAccount extends Notification implements ShouldQueue
     use Queueable;
 
     /**
-     * Create a new notification instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        //
-    }
-
-    /**
      * Get the notification's delivery channels.
      *
      * @param  mixed  $notifiable
@@ -39,7 +29,7 @@ class VerifyAccount extends Notification implements ShouldQueue
     {
         return URL::temporarySignedRoute(
             'verification.verify',
-            Carbon::now()->addMinutes(Config::get('auth.verification.expire', 2)),
+            Carbon::now()->addMinutes(Config::get('auth.verification.expire', (int)env('EXPIRED_TIME'))),
             [
                 'id' => $notifiable->getKey(),
                 'hash' => sha1($notifiable->getEmailForVerification()),
@@ -56,6 +46,6 @@ class VerifyAccount extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->markdown('mail.verifymail', ['url' => $this->verificationUrl($notifiable), 'name' => $notifiable->name]);
+            ->markdown('mail.verify_mail', ['url' => $this->verificationUrl($notifiable), 'name' => $notifiable->name]);
     }
 }

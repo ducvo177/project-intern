@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Symfony\Component\HttpFoundation\Request;
 
 class LoginController extends Controller
 {
@@ -34,13 +33,6 @@ class LoginController extends Controller
      * Create a new controller instance.
      *
      * @return void
-     */
-    /**
-     * Handle an authentication attempt.
-     *
-     * @param  \Illuminate\Http\Request $request
-     *
-     * @return Response
      */
     public function __construct()
     {
