@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
-
 use App\Notifications\VerifyAccount;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,7 +14,6 @@ class User extends Authenticatable implements MustVerifyEmail
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
-
     /**
      * The attributes that are mass assignable.
      *
@@ -40,6 +37,21 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
+    public const TYPES = [
+        'admin' => 1,
+        'student' => 3,
+    ];
+
+    public function isAdmin()
+    {
+        return $this->type == static::TYPES['admin'];
+    }
+
+    public function isStudent()
+    {
+        return $this->type == static::TYPES['student'];
+    }
+
     /**
      * The attributes that should be cast.
      *
@@ -52,12 +64,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];
+
     public function courses()
     {
         return $this->hasMany(CourseUser::class);
     }
+
     public function sendEmailVerificationNotification()
     {
         $this->notify((new VerifyAccount)->onQueue('default'));
     }
+
 }

@@ -55,9 +55,7 @@ class VerifyAccount extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        $name=$notifiable->name;
-        $url=$this->verificationUrl($notifiable);
         return (new MailMessage)
-        ->markdown('mail.verifymail', ['url'=>$url,'name'=>$name]);
+            ->markdown('mail.verifymail', ['url' => $this->verificationUrl($notifiable), 'name' => $notifiable->name]);
     }
 }
