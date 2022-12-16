@@ -22,14 +22,9 @@
 <body>
 
     <div class="main-wrapper">
-        @section('header')
-            @include('partial.header')
-        @show
-        @section('sidebar')
-            @include('partial.sidebar')
-        @show
-        @section('content')
-        @show
+        @include('partial.header')
+        @include('partial.sidebar')
+        @yield('content')
     </div>
 
 
