@@ -1,5 +1,8 @@
 @extends('layouts.admin')
-        <div class="page-wrapper">
+
+@section('content')
+@parent
+<div class="page-wrapper">
             <div class="content container-fluid">
                 <div class="row">
                     <div class="col-xl-3 col-sm-3 col-12">
@@ -218,3 +221,4 @@
                 </div>
             </div>
         </div>
+@endsection
