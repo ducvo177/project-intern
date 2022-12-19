@@ -7,7 +7,7 @@
                     <a href="{{ route('dashboard') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('user') }}"
+                    <a href="{{ route('user.index') }}"
                       ><i class="fe fe-layout"></i> <span>Quản lý user</span></a>
                   </li>
                 <li class="submenu">

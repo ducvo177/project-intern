@@ -12,7 +12,7 @@ class UserController extends Controller
     {
         $this->userRepository = $userRepository;
     }
-    public function index(Request $request)
+    public function index()
     {
         return view('admin.user.index', [
             'all_users' => $this->userRepository->getAll(request()->all())
@@ -20,7 +20,7 @@ class UserController extends Controller
     }
     public function create()
     {
-        return view('admin.createuser.index');
+        return view('admin.user.create');
     }
 
     public function store(Request $request)
@@ -36,7 +36,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view('admin.edituser.index');
+        return view('admin.user.edit');
     }
 
 

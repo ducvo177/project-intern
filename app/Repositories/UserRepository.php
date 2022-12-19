@@ -2,7 +2,9 @@
 
 namespace App\Repositories;
 
+use App\Exceptions\UserException;
 use App\Models\User;
+use Illuminate\Support\Facades\Schema;
 
 class UserRepository
 {
@@ -25,8 +27,12 @@ class UserRepository
                 ->orWhere('phone', 'LIKE', "%{$key}%")
                 ->paginate(5);
         } else {
+            request()->session()->put('key', "");
             $sortBy = $input['sort-by'] ?? "id";
             $sortType = $input['sort-type'] ?? "asc";
+            if (!Schema::hasColumn('users', $sortBy)) {
+                throw new UserException;
+            }
             return $query->orderBy($sortBy, $sortType)->paginate(5);
         }
     }

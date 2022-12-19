@@ -20,64 +20,22 @@
                         <div class="card-header">
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
                             <form class="table-search float-end" action="">
-                                <input type="text" name="key" class="form-control" placeholder="Search" value={{ session()->get('key') }}>
+                                <input type="text" name="key" class="form-control" placeholder="Search"
+                                    value={{ session()->get('key') }}>
                                 <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                             </form>
-                            <a href="{{ route('create') }}"><button class="btn btn-primary">Create new user <i class="fa-solid fa-plus"></i></button></a>
-
+                            <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
+                                        class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive no-radius">
                                 <table class="table table-hover table-center table-striped">
                                     <thead>
                                         <tr>
-                                            <th>
-                                                @if (request()->get('sort-type') == 'desc' && request()->get('sort-by') == 'id')
-                                                    <a href="?sort-by=id&sort-type=asc"> <i
-                                                            class="fa-solid fa-arrow-down-9-1"></i>
-                                                    </a>ID
-                                                @elseif(request()->get('sort-type') == 'asc' && request()->get('sort-by') == 'id')
-                                                    <a href="?sort-by=id&sort-type=desc"> <i
-                                                            class="fa-solid fa-arrow-down-1-9"></i>
-                                                    </a>ID
-                                                @else
-                                                    <a href="?sort-by=id&sort-type=desc"> <i class="fa-solid fa-sort"></i>
-                                                    </a>ID
-                                                @endif
-                                            </th>
-
-                                            <th>
-
-                                                @if (request()->get('sort-type') == 'desc' && request()->get('sort-by') == 'name')
-                                                    <a href="?sort-by=name&sort-type=asc">
-                                                        <i class="fa-solid fa-arrow-down-z-a"></i>
-                                                    </a>Name
-                                                @elseif(request()->get('sort-type') == 'asc' && request()->get('sort-by') == 'name')
-                                                    <a href="?sort-by=name&sort-type=desc">
-                                                        <i class="fa-solid fa-arrow-down-a-z"></i>
-                                                    </a>Name
-                                                @else
-                                                    <a href="?sort-by=name&sort-type=desc"> <i class="fa-solid fa-sort"></i>
-                                                    </a>Name
-                                                @endif
-
-                                            </th>
+                                            <x-sort-button sortBy="id" colName="ID" sortType="number" />
+                                            <x-sort-button sortBy="name" colName="Name" sortType="alphabet" />
                                             <th>Phone</th>
-                                            <th>
-                                                @if (request()->get('sort-type') == 'desc' && request()->get('sort-by') == 'email')
-                                                    <a href="?sort-by=email&sort-type=asc">
-                                                        <i class="fa-solid fa-arrow-down-z-a"></i>
-                                                    </a>Email
-                                                @elseif(request()->get('sort-type') == 'asc' && request()->get('sort-by') == 'email')
-                                                    <a href="?sort-by=email&sort-type=desc">
-                                                        <i class="fa-solid fa-arrow-down-a-z"></i>
-                                                    </a>Email
-                                                @else
-                                                    <a href="?sort-by=email&sort-type=desc"> <i
-                                                            class="fa-solid fa-sort"></i>
-                                                    </a>Email
-                                                @endif
-                                            </th>
+                                            <x-sort-button sortBy="email" colName="Email" sortType="alphabet" />
                                             <th>Email Verified At</th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>
@@ -123,7 +81,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="actions">
-                                                        <a href="{{ route('edit',$row->id) }}" class="btn btn-sm bg-success-light me-2">
+                                                        <a href="{{ route('user.edit', ['user' => $row->id]) }}"
+                                                            class="btn btn-sm bg-success-light me-2">
                                                             <i class="fe fe-eye"></i>
                                                         </a>
                                                         <a href="" class="btn btn-sm bg-danger-light">
