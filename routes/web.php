@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +24,7 @@ Route::get('/email/verify/{id}/{hash}', [VerifycationController::class,'verify']
 Auth::routes(['verify' => true]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
     Route::resource('user', App\Http\Controllers\Backend\UserController::class);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-})->middleware(['auth', 'verified'])->name('admin');
+})->name('admin');
