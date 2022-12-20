@@ -6,7 +6,10 @@
                 <li class="active">
                     <a href="{{ route('dashboard') }}"><i class="fe fe-home"></i> <span>Dashboard</span></a>
                 </li>
-
+                <li>
+                    <a href="{{ route('user.index') }}"
+                      ><i class="fe fe-layout"></i> <span>Quản lý user</span></a>
+                  </li>
                 <li class="submenu">
                     <a href="#"><i class="fe fe-users"></i> <span> Tài khoản </span> <span
                             class="menu-arrow"></span></a>
