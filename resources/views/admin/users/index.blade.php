@@ -32,10 +32,10 @@
                                 <table class="table table-hover table-center table-striped">
                                     <thead>
                                         <tr>
-                                            <x-sort-link sortBy="id" colName="ID" sortType="number" />
-                                            <x-sort-link sortBy="name" colName="Name" sortType="alphabet" />
+                                            <x-sort-link columnName="Id"  sortType="desc"/>
+                                            <x-sort-link columnName="Name"  sortType="desc"/>
                                             <th>Phone</th>
-                                            <x-sort-link sortBy="email" colName="Email" sortType="alphabet" />
+                                            <x-sort-link columnName="Email"  sortType="desc"/>
                                             <th>Email Verified At</th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>

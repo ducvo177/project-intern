@@ -26,12 +26,12 @@ class UserRepository
                 ->orWhere('phone', 'LIKE', "%{$key}%")
                 ->paginate(5);
         }
-        $sortBy = $input['sort-by'] ?? "id";
-        $sortType = $input['sort-type'] ?? "asc";
-        $checkSortBy = Schema::hasColumn('users', $sortBy);
+        $columnName = $input['column_name'] ?? "id";
+        $sortType = $input['sort_type'] ?? "asc";
+        $checkColumn = Schema::hasColumn('users', $columnName);
         $checkSortType = in_array(strtolower(trim($sortType)), static::SORT_TYPES);
-        if ($checkSortBy && $checkSortType) {
-            return $query->orderBy($sortBy, $sortType)->paginate(5);
+        if ($checkColumn && $checkSortType) {
+            return $query->orderBy($columnName, $sortType)->paginate(5);
         }
         return $query->paginate(5);
     }
