@@ -39,8 +39,11 @@ class VerificationController extends Controller
             throw new AuthorizationException();
         }
 
-        if ($user->markEmailAsVerified())
+        if ($user->markEmailAsVerified()){
             event(new Verified($user));
+            $user = User::find($request->route('id'));
+            auth()->login($user);
+        }
 
         return redirect()->route('login')->with('verified', true);
     }
