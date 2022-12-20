@@ -12,15 +12,17 @@ class UserController extends Controller
     {
         $this->userRepository = $userRepository;
     }
+
     public function index()
     {
-        return view('admin.user.index', [
+        return view('admin.users.index', [
             'all_users' => $this->userRepository->getAll(request()->all())
         ]);
     }
+
     public function create()
     {
-        return view('admin.user.create');
+        return view('admin.users.create');
     }
 
     public function store(Request $request)
@@ -33,18 +35,15 @@ class UserController extends Controller
         //
     }
 
-
     public function edit($id)
     {
-        return view('admin.user.edit');
+        return view('admin.users.edit');
     }
-
 
     public function update(Request $request, $id)
     {
         //
     }
-
 
     public function destroy($id)
     {

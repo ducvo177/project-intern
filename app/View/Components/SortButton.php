@@ -4,7 +4,7 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class SortButton extends Component
+class SortLink extends Component
 {
     public $sortBy;
     public $colName;
@@ -32,6 +32,6 @@ class SortButton extends Component
 
     public function render()
     {
-        return view('components.sort-button');
+        return view('components.sort-link');
     }
 }

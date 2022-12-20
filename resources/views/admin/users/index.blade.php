@@ -21,7 +21,7 @@
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
                             <form class="table-search float-end" action="">
                                 <input type="text" name="key" class="form-control" placeholder="Search"
-                                    value={{ session()->get('key') }}>
+                                    value={{request()->key }}>
                                 <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                             </form>
                             <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
@@ -32,10 +32,10 @@
                                 <table class="table table-hover table-center table-striped">
                                     <thead>
                                         <tr>
-                                            <x-sort-button sortBy="id" colName="ID" sortType="number" />
-                                            <x-sort-button sortBy="name" colName="Name" sortType="alphabet" />
+                                            <x-sort-link sortBy="id" colName="ID" sortType="number" />
+                                            <x-sort-link sortBy="name" colName="Name" sortType="alphabet" />
                                             <th>Phone</th>
-                                            <x-sort-button sortBy="email" colName="Email" sortType="alphabet" />
+                                            <x-sort-link sortBy="email" colName="Email" sortType="alphabet" />
                                             <th>Email Verified At</th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>
@@ -95,7 +95,7 @@
 
                                     </tbody>
                                 </table>
-                                <div class="mt-5">{{ $all_users->links('pagination.default') }}</div>
+                                <div class="mt-5">{{ $all_users->appends(['key' =>request()->key])->links('pagination.default') }}</div>
 
                             </div>
                         </div>
