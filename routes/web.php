@@ -27,6 +27,6 @@ Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
-Route::prefix('admin')->middleware(['auth','admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 })->name('admin');

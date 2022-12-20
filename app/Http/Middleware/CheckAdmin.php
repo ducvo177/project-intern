@@ -14,6 +14,7 @@ class CheckAdmin
         if (!Auth::user()->isAdmin()) {
             return redirect("/home");
         }
+        
         return $next($request);
     }
 }
