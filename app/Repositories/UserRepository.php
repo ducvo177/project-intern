@@ -18,21 +18,25 @@ class UserRepository
     public function getAll(array $input = [])
     {
         $query = $this->model->query();
-        $key = $input['key'] ?? "";
-        if ($key) {
+        $keyword = $input['key'] ?? "";
+
+        if ($keyword) {
             return $query
-                ->where('name', 'LIKE', "%{$key}%")
-                ->orWhere('id', 'LIKE', "%{$key}%")
-                ->orWhere('phone', 'LIKE', "%{$key}%")
+                ->where('name', 'LIKE', "%{$keyword}%")
+                ->orWhere('id', 'LIKE', "%{$keyword}%")
+                ->orWhere('phone', 'LIKE', "%{$keyword}%")
                 ->paginate(5);
         }
+
         $columnName = $input['column_name'] ?? "id";
         $sortType = $input['sort_type'] ?? "asc";
         $checkColumn = Schema::hasColumn('users', $columnName);
         $checkSortType = in_array(strtolower(trim($sortType)), static::SORT_TYPES);
+
         if ($checkColumn && $checkSortType) {
             return $query->orderBy($columnName, $sortType)->paginate(5);
         }
+        
         return $query->paginate(5);
     }
 }

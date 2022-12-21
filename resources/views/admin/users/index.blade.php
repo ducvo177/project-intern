@@ -21,7 +21,7 @@
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
                             <form class="table-search float-end" action="">
                                 <input type="text" name="key" class="form-control" placeholder="Search"
-                                    value={{request()->key }}>
+                                    value={{ request()->key }}>
                                 <button class="btn" type="submit"><i class="fa fa-search"></i></button>
                             </form>
                             <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
@@ -32,10 +32,17 @@
                                 <table class="table table-hover table-center table-striped">
                                     <thead>
                                         <tr>
-                                            <x-sort-link columnName="Id"  sortType="desc"/>
-                                            <x-sort-link columnName="Name"  sortType="desc"/>
+                                            <th>
+                                                ID
+                                                <x-sort-link columnName="id" sortType="desc" />
+                                            </th>
+                                            <th>Name
+                                                <x-sort-link columnName="name" sortType="desc" />
+                                            </th>
                                             <th>Phone</th>
-                                            <x-sort-link columnName="Email"  sortType="desc"/>
+                                            <th> Email
+                                                <x-sort-link columnName="email" sortType="desc" />
+                                            </th>
                                             <th>Email Verified At</th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>
@@ -44,7 +51,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($all_users as $row)
+                                        @foreach ($users as $row)
                                             <tr>
                                                 <td>
                                                     <div class="font-weight-600">{{ $row->id }}</div>
@@ -95,7 +102,8 @@
 
                                     </tbody>
                                 </table>
-                                <div class="mt-5">{{ $all_users->appends(['key' =>request()->key])->links('pagination.default') }}</div>
+                                <div class="mt-5">
+                                    {{ $users->appends(['key' =>request()->key])->links('pagination.default') }}</div>
 
                             </div>
                         </div>
