@@ -3,6 +3,9 @@
     @parent
     <div class="page-wrapper">
         <div class="content container-fluid">
+            @if(session()->has('notification'))
+            <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
+            @endif
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
