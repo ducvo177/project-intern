@@ -12,7 +12,7 @@ class BaseRepository
         $this->model = $model;
     }
 
-    public function store(array $inputs, array $conditions = ['id' => null,'type'=>1])
+    public function store(array $inputs, array $conditions = ['id' => null])
     {
         return $this->model->updateOrCreate($conditions, $inputs);
     }
