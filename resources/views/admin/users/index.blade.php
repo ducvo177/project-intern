@@ -18,11 +18,7 @@
                     <div class="card card-table flex-fill">
                         <div class="card-header">
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
-                            <form class="table-search float-end" action="">
-                                <input type="text" name="key" class="form-control" placeholder="Search"
-                                    value={{ request()->key }}>
-                                <button class="btn" type="submit"><i class="fa fa-search"></i></button>
-                            </form>
+                            @include('partial.search')
                             <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
@@ -33,14 +29,14 @@
                                         <tr>
                                             <th>
                                                 ID
-                                                <x-sort-link columnName="id"/>
+                                                <x-sort-link columnName="id" />
                                             </th>
                                             <th>Name
-                                                <x-sort-link columnName="name"/>
+                                                <x-sort-link columnName="name" />
                                             </th>
                                             <th>Phone</th>
                                             <th> Email
-                                                <x-sort-link columnName="email"/>
+                                                <x-sort-link columnName="email" />
                                             </th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>
@@ -87,7 +83,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-5">
-                                    {{ $users->appends(['key' => request()->key])->links() }}</div>
+                                    {{ $users->appends(request()->all())->links() }}</div>
                             </div>
                         </div>
                     </div>
