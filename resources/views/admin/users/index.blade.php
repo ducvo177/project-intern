@@ -18,7 +18,7 @@
                     <div class="card card-table flex-fill">
                         <div class="card-header">
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
-                           @include('partial.search')
+                            @include('partial.search')
                             <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
@@ -83,7 +83,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-5">
-                                    {{ $users->appends(['key' => request()->key,'role'=>request()->role])->links() }}</div>
+                                    {{ $users->appends(['key' => request()->key, 'role' => request()->role])->links() }}</div>
                             </div>
                         </div>
                     </div>
