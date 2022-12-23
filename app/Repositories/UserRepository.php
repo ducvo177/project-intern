@@ -19,19 +19,18 @@ class UserRepository
     public function getAll(array $input = [])
     {
         $query = $this->model->query();
-        $key=$input['key']??'';
-        $role=$input['role']??'';
+        $keyword = $input['key'] ?? '';
 
-        if ($key) {
-            $query->where(function ($query) use ($key){
-                $query->where('name', 'LIKE', "%{$key}%")
-                    ->orWhere('id', 'LIKE', "%{$key}%")
-                    ->orWhere('phone', 'LIKE', "%{$key}%");
+        if ($keyword) {
+            $query->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', "%{$keyword}%")
+                    ->orWhere('id', 'LIKE', "%{$keyword}%")
+                    ->orWhere('phone', 'LIKE', "%{$keyword}%");
             });
         }
 
-        if ($role) {
-            $query->where('type', $role);
+        if (!empty($input['role'])) {
+            $query->where('type', $input['role']);
         }
 
         $columnName = $input['column_name'] ?? 'id';

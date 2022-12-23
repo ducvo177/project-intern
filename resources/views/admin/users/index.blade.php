@@ -83,7 +83,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-5">
-                                    {{ $users->appends(['key' => request()->key, 'role' => request()->role])->links() }}</div>
+                                    {{ $users->appends(request()->all())->links() }}</div>
                             </div>
                         </div>
                     </div>
