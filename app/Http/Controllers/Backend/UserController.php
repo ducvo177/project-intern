@@ -33,9 +33,8 @@ class UserController extends Controller
     {
         $inputs = $request->all();
         $inputs['type'] = User::TYPES['admin'];
-        return redirect()->route('user.index', [
-            $this->userRepository->store($inputs),
-        ])->with('notification', 'Add new user successfully!!');
+        $this->userRepository->store($inputs);
+        return redirect()->route('user.index')->with('notification', 'Add new user successfully!!');
     }
 
     public function show($id)
