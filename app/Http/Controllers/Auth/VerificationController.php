@@ -36,7 +36,7 @@ class VerificationController extends Controller
         $user = User::find($request->route('id'));
 
         if ($request->route('id') != $user->getKey()) {
-            throw new AuthorizationException();
+            throw new AuthorizationException;
         }
 
         if ($user->markEmailAsVerified()){
