@@ -27,7 +27,7 @@ class StoreUserRequest extends FormRequest
         return [
             'name' => ['required', 'max:255', 'string'],
             'phone' => ['required', 'digits_between:10,11', 'numeric', 'unique:users,phone'],
-            'email' => ['required', 'max:255', 'regex:/^.+@.+$/i', 'unique:users,email'],
+            'email' => ['required', 'max:255', 'email', 'unique:users,email'],
             'password' => ['required_with:password_confirmation', 'same:password_confirmation', 'max:255', Password::min(6)->letters()->numbers()->symbols()],
             'password_confirmation' => [Password::min(6)->letters()->numbers()->symbols()]
         ];
