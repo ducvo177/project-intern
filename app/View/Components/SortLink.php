@@ -7,7 +7,6 @@ use Illuminate\View\Component;
 class SortLink extends Component
 {
     public $columnName;
-    public $sortType;
     public const SORT_ICONS = [
         'desc' => 'fa-solid fa-sort-down',
         'asc' => 'fa-solid fa-sort-up',
@@ -16,10 +15,9 @@ class SortLink extends Component
     public const SORT_TYPES = ['asc', 'desc'];
     public const SORT_DEFAULT = 'desc';
 
-    public function __construct($columnName, $sortType)
+    public function __construct($columnName)
     {
         $this->columnName = $columnName;
-        $this->sortType = $sortType;
     }
 
     /**

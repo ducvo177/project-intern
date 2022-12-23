@@ -34,14 +34,14 @@
                                         <tr>
                                             <th>
                                                 ID
-                                                <x-sort-link columnName="id" sortType="desc" />
+                                                <x-sort-link columnName="id"/>
                                             </th>
                                             <th>Name
-                                                <x-sort-link columnName="name" sortType="desc" />
+                                                <x-sort-link columnName="name"/>
                                             </th>
                                             <th>Phone</th>
                                             <th> Email
-                                                <x-sort-link columnName="email" sortType="desc" />
+                                                <x-sort-link columnName="email"/>
                                             </th>
                                             <th class="text-center">Type</th>
                                             <th>Created At</th>

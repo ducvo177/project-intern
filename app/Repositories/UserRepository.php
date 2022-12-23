@@ -9,6 +9,7 @@ class UserRepository
 {
     protected $model;
     public const SORT_TYPES = ['desc', 'asc'];
+    public const PER_PAGE = 5;
 
     public function __construct(User $model)
     {
@@ -35,6 +36,6 @@ class UserRepository
             $query->orderBy($columnName, $sortType);
         }
 
-        return $query->paginate(5);
+        return $query->paginate(static::PER_PAGE);
     }
 }
