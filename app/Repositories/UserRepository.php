@@ -9,6 +9,7 @@ class UserRepository extends BaseRepository
 {
     protected $model;
     public const SORT_TYPES = ['desc', 'asc'];
+    public const PER_PAGE = 5;
 
     public function __construct(User $model)
     {
@@ -18,21 +19,23 @@ class UserRepository extends BaseRepository
     public function getAll(array $input = [])
     {
         $query = $this->model->query();
-        $key = $input['key'] ?? "";
-        if ($key) {
-            return $query
-                ->where('name', 'LIKE', "%{$key}%")
-                ->orWhere('id', 'LIKE', "%{$key}%")
-                ->orWhere('phone', 'LIKE', "%{$key}%")
-                ->paginate(5);
+        $keyword = $input['key'] ?? "";
+
+        if ($keyword) {
+            $query->where('name', 'LIKE', "%{$keyword}%")
+                ->orWhere('id', 'LIKE', "%{$keyword}%")
+                ->orWhere('phone', 'LIKE', "%{$keyword}%");
         }
+
         $columnName = $input['column_name'] ?? "id";
         $sortType = $input['sort_type'] ?? "asc";
         $checkColumn = Schema::hasColumn('users', $columnName);
         $checkSortType = in_array(strtolower(trim($sortType)), static::SORT_TYPES);
+
         if ($checkColumn && $checkSortType) {
-            return $query->orderBy($columnName, $sortType)->paginate(5);
+            $query->orderBy($columnName, $sortType);
         }
-        return $query->paginate(5);
+
+        return $query->paginate(static::PER_PAGE);
     }
 }

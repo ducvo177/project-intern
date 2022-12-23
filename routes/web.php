@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
-use Illuminate\Foundation\Auth\EmailVerificationRequest;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 

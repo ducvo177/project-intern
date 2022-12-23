@@ -1,5 +1,3 @@
-<th>
         <a href="{{ $sortUrl }}">
-                <i class="{{ $sortIcon }}"></i>
-        </a>{{ $columnName }}
-</th>
+            <i class="{{ $sortIcon }}"></i>
+        </a>
