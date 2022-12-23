@@ -19,24 +19,25 @@ class UserRepository
     {
         $query = $this->model->query();
         $keyword = $input['key'] ?? "";
+        $columnName = $input['column_name'] ?? "id";
+        $sortType = $input['sort_type'] ?? "asc";
 
         if ($keyword) {
             return $query
                 ->where('name', 'LIKE', "%{$keyword}%")
                 ->orWhere('id', 'LIKE', "%{$keyword}%")
                 ->orWhere('phone', 'LIKE', "%{$keyword}%")
+                ->orderBy($columnName, $sortType)
                 ->paginate(5);
         }
 
-        $columnName = $input['column_name'] ?? "id";
-        $sortType = $input['sort_type'] ?? "asc";
         $checkColumn = Schema::hasColumn('users', $columnName);
         $checkSortType = in_array(strtolower(trim($sortType)), static::SORT_TYPES);
-
+        
         if ($checkColumn && $checkSortType) {
             return $query->orderBy($columnName, $sortType)->paginate(5);
         }
-        
+
         return $query->paginate(5);
     }
 }
