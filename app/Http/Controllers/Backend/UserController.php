@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreUserRequest;
+use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
     protected $userRepository;
-    
+
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
@@ -24,12 +26,16 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        $inputs = $request->all();
+        $inputs['type'] = User::TYPES['admin'];
+        return redirect()->route('user.index', [
+            $this->userRepository->store($inputs),
+        ])->with('notification', 'Add new user successfully!!');
     }
 
     public function show($id)
