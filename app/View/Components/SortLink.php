@@ -41,9 +41,8 @@ class SortLink extends Component
             $sortIcon = request()->get('sort_type') === static::SORT_TYPES[0] ? static::SORT_ICONS['asc'] : static::SORT_ICONS['desc'];
         }
 
-        $sortUrl = route($routeName, $params);
         return view('components.sort-link', [
-            'sortUrl' => $sortUrl,
+            'sortUrl' => route($routeName, $params),
             'sortIcon' => $sortIcon,
         ]);
     }
