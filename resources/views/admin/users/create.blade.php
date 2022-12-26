@@ -22,7 +22,7 @@
                         </div>
                         <div class="card-body">
                             <form action="{{ route('user.store') }}" method="POST">
-                                @include('partial._form')
+                                @include('admin.users._form')
                             </form>
                         </div>
                     </div>

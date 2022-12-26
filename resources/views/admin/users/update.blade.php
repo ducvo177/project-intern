@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <form action="{{route('user.update', $user->id)}}" method="POST">
                                 @method('PUT')
-                                @include('partial._form')
+                                @include('admin.users._form')
                             </form>
                         </div>
                     </div>
