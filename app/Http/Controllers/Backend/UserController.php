@@ -34,7 +34,7 @@ class UserController extends Controller
     {
         $inputs = $request->all();
         $inputs['type'] = User::TYPES['admin'];
-        $this->userRepository->store($inputs);
+        $this->userRepository->save($inputs);
         return redirect()->route('user.index')->with('notification', 'Add new user successfully!!');
     }
 
@@ -51,13 +51,14 @@ class UserController extends Controller
     public function update(UpdateUserRequest $request, $id)
     {
         $inputs = $request->all();
-        unset($inputs['password']);
 
         if (!empty($inputs['password'])) {
             $inputs['password'] = Hash::make($inputs['password']);
+        }else{
+            unset($inputs['password']);
         }
 
-        $this->userRepository->store($inputs, ['id' => $id]);
+        $this->userRepository->save($inputs, ['id' => $id]);
         return redirect()->route('user.index')->with('notification', 'Update user successfully!!');
     }
 
