@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\User;
+
 class BaseRepository
 {
     protected $model;
@@ -15,5 +16,10 @@ class BaseRepository
     public function store(array $inputs, array $conditions = ['id' => null])
     {
         return $this->model->updateOrCreate($conditions, $inputs);
+    }
+
+    public function delete($id)
+    {
+        User::where('id', $id)->delete();
     }
 }

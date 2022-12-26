@@ -75,8 +75,12 @@
                                                             class="btn btn-sm bg-success-light me-2">
                                                             <i class="fe fe-eye"></i>
                                                         </a>
-                                                        <a href="" class="btn btn-sm bg-danger-light">
-                                                            <i class="fe fe-close"></i>
+                                                        <a href="#" onclick="event.preventDefault()"  class="btn btn-sm bg-danger-light">
+                                                        <form action="{{ route('user.destroy',['user' => $user->id]) }}" method="POST">
+                                                            @method('delete')
+                                                            @csrf
+                                                                <i class="fe fe-close"></i>
+                                                            </form>
                                                         </a>
                                                     </div>
                                                 </td>
