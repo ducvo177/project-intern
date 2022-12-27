@@ -45,7 +45,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        return view('admin.users.update', ['user' => User::find($id)]);
+        return view('admin.users.edit', ['user' => User::find($id)]);
     }
 
     public function update(UpdateUserRequest $request, $id)
