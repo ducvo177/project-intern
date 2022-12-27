@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -34,7 +36,7 @@ class UserController extends Controller
     {
         $inputs = $request->all();
         $inputs['type'] = User::TYPES['admin'];
-        $this->userRepository->store($inputs);
+        $this->userRepository->save($inputs);
         return redirect()->route('user.index')->with('notification', 'Add new user successfully!!');
     }
 
@@ -45,12 +47,21 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('admin.users.edit', ['user' => User::find($id)]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, $id)
     {
-        //
+        $inputs = $request->all();
+
+        if (!empty($inputs['password'])) {
+            $inputs['password'] = Hash::make($inputs['password']);
+        } else {
+            unset($inputs['password']);
+        }
+
+        $this->userRepository->save($inputs, ['id' => $id]);
+        return redirect()->route('user.index')->with('notification', 'Update user successfully!!');
     }
 
     public function destroy($id)

@@ -76,7 +76,7 @@
                                                     <div class="actions d-flex">
                                                         <a href="{{ route('user.edit', ['user' => $user->id]) }}"
                                                             class="btn btn-sm bg-success-light me-2">
-                                                            <i class="fe fe-eye"></i>
+                                                            <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
 
                                                         <x-button-delete
