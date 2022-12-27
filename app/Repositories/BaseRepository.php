@@ -17,9 +17,4 @@ class BaseRepository
     {
         return $this->model->updateOrCreate($conditions, $inputs);
     }
-
-    public function delete($id)
-    {
-        User::where('id', $id)->delete();
-    }
 }

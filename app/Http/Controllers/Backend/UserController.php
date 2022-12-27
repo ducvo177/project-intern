@@ -7,6 +7,7 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -54,8 +55,11 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        $this->userRepository->delete($id);
-        dd(1);
+        if(Auth::user()->id==$id){
+            return redirect()->route('user.index')->with('error', 'Fail to delete user!!');
+        }else{
+            User::destroy($id);
+        }
         return redirect()->route('user.index')->with('notification', 'Delete user successfully!!');
     }
 }
