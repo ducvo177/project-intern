@@ -8,6 +8,8 @@ use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -64,6 +66,11 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        //
+        if(Auth::user()->id==$id){
+            return redirect()->route('user.index')->with('error', 'You can not delete your self!!');
+        }
+
+        User::destroy($id);
+        return redirect()->route('user.index')->with('notification', 'Delete user successfully!!');
     }
 }
