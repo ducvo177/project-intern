@@ -54,7 +54,7 @@ class UserController extends Controller
 
         if (!empty($inputs['password'])) {
             $inputs['password'] = Hash::make($inputs['password']);
-        }else{
+        } else {
             unset($inputs['password']);
         }
 
