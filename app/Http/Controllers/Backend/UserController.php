@@ -57,9 +57,9 @@ class UserController extends Controller
     {
         if(Auth::user()->id==$id){
             return redirect()->route('user.index')->with('error', 'Fail to delete user!!');
-        }else{
-            User::destroy($id);
         }
+        
+        User::destroy($id);
         return redirect()->route('user.index')->with('notification', 'Delete user successfully!!');
     }
 }

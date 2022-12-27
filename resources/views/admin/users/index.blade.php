@@ -79,9 +79,10 @@
                                                             <i class="fe fe-eye"></i>
                                                         </a>
 
-                                                            <x-button-delete
-                                                                route="{{ route('user.destroy', ['user' => $user->id]) }}" userId="{{$user->id}}" currentUserId="{{Auth::user()->id}}"/>
-
+                                                        <x-button-delete
+                                                            route="{{ route('user.destroy', ['user' => $user->id]) }}"
+                                                            userId="{{ $user->id }}"
+                                                            currentUserId="{{ Auth::user()->id }}" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -101,5 +102,5 @@
     </div>
 @endsection
 @push('scripts')
-<script src="{{asset('assets/js/user.js')}}"></script>
+    <script src="{{ asset('/assets/js/user.js') }}"></script>
 @endpush
