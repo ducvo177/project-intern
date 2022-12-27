@@ -17,7 +17,6 @@
 
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
-    @stack('scripts')
 </head>
 
 <body>
@@ -36,6 +35,8 @@
     <script src="{{ asset('assets/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/script.js') }}"></script>
+
+    @stack('scripts')
 </body>
 
 </html>
