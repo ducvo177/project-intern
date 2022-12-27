@@ -73,7 +73,7 @@
                                                     <div class="actions">
                                                         <a href="{{ route('user.edit', ['user' => $user->id]) }}"
                                                             class="btn btn-sm bg-success-light me-2">
-                                                            <i class="fe fe-eye"></i>
+                                                            <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
                                                         <a href="" class="btn btn-sm bg-danger-light">
                                                             <i class="fe fe-close"></i>
