@@ -2,8 +2,11 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
-            @if(session()->has('notification'))
-            <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
+            @if (session()->has('notification'))
+                <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible">{{ session()->get('error') }}</div>
             @endif
             <div class="page-header">
                 <div class="user align-items-center">
@@ -70,14 +73,16 @@
                                                     {{ $user->updated_at }}
                                                 </td>
                                                 <td>
-                                                    <div class="actions">
+                                                    <div class="actions d-flex">
                                                         <a href="{{ route('user.edit', ['user' => $user->id]) }}"
                                                             class="btn btn-sm bg-success-light me-2">
                                                             <i class="fe fe-eye"></i>
                                                         </a>
-                                                        <a href="" class="btn btn-sm bg-danger-light">
-                                                            <i class="fe fe-close"></i>
-                                                        </a>
+
+                                                        <x-button-delete
+                                                            route="{{ route('user.destroy', ['user' => $user->id]) }}"
+                                                            userId="{{ $user->id }}"
+                                                            currentUserId="{{ Auth::user()->id }}" />
                                                     </div>
                                                 </td>
                                             </tr>
@@ -96,3 +101,6 @@
         </div>
     </div>
 @endsection
+@push('scripts')
+    <script src="{{ asset('/assets/js/user.js') }}"></script>
+@endpush
