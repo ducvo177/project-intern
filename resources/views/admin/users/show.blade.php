@@ -17,7 +17,7 @@
                 <div class="col-md-4">
                     <div class="card">
                         <div class="card-header all-center">
-                            <a href="general.html" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
+                            <a href="#" class="avatar avatar-sm me-2"><img class="avatar-img rounded-circle"
                                     src="{{ asset('assets/img/profiles/avatar-01.jpg') }}" alt="User Image">
                                 <i class="fe fe-camera"></i>
                             </a>
