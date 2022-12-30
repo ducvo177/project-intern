@@ -56,7 +56,11 @@
                                                 <td>
                                                     <div class="font-weight-600">{{ $user->id }}</div>
                                                 </td>
-                                                <td>{{ $user->name }}</td>
+                                                <td>
+                                                    <a href="{{ route('user.show', ['user' => $user->id]) }}">
+                                                        {{ $user->name }}
+                                                    </a>
+                                                </td>
                                                 <td>
                                                     {{ $user->phone }}
                                                 </td>
