@@ -37,4 +37,12 @@ class ConfirmPasswordController extends Controller
     {
         $this->middleware('auth');
     }
+
+    public function changepassword(){
+
+    }
+
+    public function updatepassword(){
+
+    }
 }
