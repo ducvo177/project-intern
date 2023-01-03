@@ -68,13 +68,12 @@
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->price }} $</td>
                                             <td>{{ $course->old_price }} $</td>
-                                            <td>{{ $course->lessons }}</td>
+                                            <td>{{ $course->lessons_count }}</td>
                                             <td>{{ $course->category->name ?? null }}</td>
                                         @endforeach
                                     </tr>
                                 </tbody>
                             </table>
-                            <p>Total lessons: {{ $totalLessons }}</p>
                         </div>
                     </div>
                 </div>

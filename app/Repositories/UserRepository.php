@@ -45,7 +45,8 @@ class UserRepository extends BaseRepository
         return $query->paginate(static::PER_PAGE);
     }
 
-    public function findById($id){
+    public function findById($id)
+    {
         return User::find($id);
     }
 }
