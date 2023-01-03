@@ -9,11 +9,6 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function courseUser()
-    {
-        return $this->hasOne(CourseUser::class);
-    }
-
     public function sections()
     {
         return $this->hasMany(Section::class);

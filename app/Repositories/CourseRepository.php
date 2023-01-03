@@ -15,4 +15,8 @@ class CourseRepository extends BaseRepository
     {
         return $this->model->whereRelation('Users', 'users.id', $userId)->with('category')->get();
     }
+
+    public function getTotalLessons($userId){
+        return $this->model->whereRelation('Users', 'users.id', $userId)->sum('lessons');
+    }
 }

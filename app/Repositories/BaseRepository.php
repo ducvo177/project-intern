@@ -17,8 +17,4 @@ class BaseRepository
     {
         return $this->model->updateOrCreate($conditions, $inputs);
     }
-    
-    public function findById($id){
-        return User::find($id);
-    }
 }

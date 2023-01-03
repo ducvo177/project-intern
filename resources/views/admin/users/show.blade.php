@@ -64,7 +64,6 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-
                                         @foreach ($courses as $course)
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->price }} $</td>
@@ -75,6 +74,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            <p>Total lessons: {{ $totalLessons }}</p>
                         </div>
                     </div>
                 </div>
