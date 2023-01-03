@@ -9,20 +9,28 @@ class Course extends Model
 {
     use HasFactory;
 
-    public function category()
+    public function courseUser()
     {
-        return $this->belongsTo(Category::class);
+        return $this->hasOne(CourseUser::class);
     }
-    public function courses()
-    {
-        return $this->hasMany(CourseUser::class);
-    }
+
     public function sections()
     {
         return $this->hasMany(Section::class);
     }
+
     public function lessons()
     {
         return $this->hasMany(Lesson::class);
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 }

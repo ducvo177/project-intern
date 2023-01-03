@@ -59,19 +59,18 @@
                                         <th>Price</th>
                                         <th>Old Price</th>
                                         <th>Lessons</th>
-                                        <th>Registered date</th>
                                         <th>Category</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr>
+
                                         @foreach ($courses as $course)
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->price }} $</td>
                                             <td>{{ $course->old_price }} $</td>
                                             <td>{{ $course->lessons }}</td>
-                                            <td>{{ $course->registerdate }}</td>
-                                            <td>{{ $course->category??null }}</td>
+                                            <td>{{ $course->category->name ?? null }}</td>
                                         @endforeach
                                     </tr>
                                 </tbody>

@@ -43,12 +43,12 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return view('admin.users.show', ['user' => User::find($id), 'courses' => $this->courseRepository->getByUserId($id)]);
+        return view('admin.users.show', ['user' => $this->userRepository->findById($id), 'courses' => $this->courseRepository->getByUserId($id)]);
     }
 
     public function edit($id)
     {
-        return view('admin.users.edit', ['user' => User::find($id)]);
+        return view('admin.users.edit', ['user' => $this->userRepository->findById($id)]);
     }
 
     public function update(UpdateUserRequest $request, $id)
