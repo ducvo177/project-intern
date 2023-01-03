@@ -38,11 +38,11 @@ class ConfirmPasswordController extends Controller
         $this->middleware('auth');
     }
 
-    public function changepassword(){
-
+    public function changePassword(){
+        return view('admin.users.change_password.blade');   
     }
 
-    public function updatepassword(){
+    public function updatePassword(){
 
     }
 }
