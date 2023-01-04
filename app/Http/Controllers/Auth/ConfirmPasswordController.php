@@ -39,7 +39,7 @@ class ConfirmPasswordController extends Controller
     }
 
     public function changePassword(){
-        return view('admin.users.change_password.blade');   
+        return view('admin.users.change_password');
     }
 
     public function updatePassword(){
