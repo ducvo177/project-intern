@@ -63,15 +63,15 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        @foreach ($courses as $course)
+                                    @foreach ($courses as $course)
+                                        <tr>
                                             <td>{{ $course->name }}</td>
                                             <td>{{ $course->price }} $</td>
                                             <td>{{ $course->old_price }} $</td>
                                             <td>{{ $course->lessons_count }}</td>
                                             <td>{{ $course->category->name ?? null }}</td>
-                                        @endforeach
-                                    </tr>
+                                        </tr>
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
