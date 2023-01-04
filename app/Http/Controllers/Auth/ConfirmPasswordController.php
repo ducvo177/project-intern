@@ -41,11 +41,13 @@ class ConfirmPasswordController extends Controller
         $this->middleware('auth');
     }
 
-    public function showForm(){
+    public function showForm()
+    {
         return view('admin.users.change_password');
     }
 
-    public function updatePassword(PasswordRequest $request){
+    public function updatePassword(PasswordRequest $request)
+    {
         $user=Auth::user();
         $user->password=Hash::make($request->new_password);
         $user->save();
