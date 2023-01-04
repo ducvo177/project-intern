@@ -7,17 +7,18 @@ use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Repositories\CourseRepository;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     protected $userRepository;
 
-    public function __construct(UserRepository $userRepository)
+    public function __construct(UserRepository $userRepository, CourseRepository $courseRepository)
     {
         $this->userRepository = $userRepository;
+        $this->courseRepository = $courseRepository;
     }
 
     public function index()
@@ -42,12 +43,12 @@ class UserController extends Controller
 
     public function show($id)
     {
-        //
+        return view('admin.users.show', ['user' => $this->userRepository->findById($id), 'courses' => $this->courseRepository->getByUserId($id) ]);
     }
 
     public function edit($id)
     {
-        return view('admin.users.edit', ['user' => User::find($id)]);
+        return view('admin.users.edit', ['user' => $this->userRepository->findById($id)]);
     }
 
     public function update(UpdateUserRequest $request, $id)
@@ -66,7 +67,7 @@ class UserController extends Controller
 
     public function destroy($id)
     {
-        if(Auth::user()->id==$id){
+        if (Auth::user()->id == $id) {
             return redirect()->route('user.index')->with('error', 'You can not delete your self!!');
         }
 
