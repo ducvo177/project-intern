@@ -43,6 +43,6 @@ class ConfirmPasswordController extends Controller
     }
 
     public function updatePassword(){
-
+        return redirect()->route('user.index')->with('notification', 'Change password successfully!!');
     }
 }
