@@ -27,7 +27,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 
 Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
     Route::resource('user', App\Http\Controllers\Backend\UserController::class);
-    Route::get('/change-password',[App\Http\Controllers\Auth\ConfirmPasswordController::class,'changePassword'])->name('changepassword');
-    Route::post('/update-password',[App\Http\Controllers\Auth\ConfirmPasswordController::class,'updatePassword'])->name('updatepassword');
+    Route::get('/change-password',[App\Http\Controllers\Auth\ConfirmPasswordController::class,'showForm'])->name('change_password');
+    Route::post('/update-password',[App\Http\Controllers\Auth\ConfirmPasswordController::class,'updatePassword'])->name('update_password');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 })->name('admin');

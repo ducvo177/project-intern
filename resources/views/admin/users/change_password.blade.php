@@ -21,23 +21,23 @@
                             <h4 class="card-title ">Add new user</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('updatepassword') }}" method="POST">
+                            <form action="{{ route('update_password') }}" method="POST">
                                 @csrf
                                 <div class="form-group">
                                     <label>Curent Password</label>
-                                    <input type="password" class="form-control @error('currentpassword') is-invalid @enderror"
-                                        name="currentpassword" placeholder="Enter your current password">
-                                    @error('currentpassword')
-                                        <div class="alert alert-danger invalid-feedback">{{ $errors->first('currentpassword') }}
+                                    <input type="password" class="form-control @error('old_password') is-invalid @enderror"
+                                        name="old_password" placeholder="Enter your old password">
+                                    @error('old_password')
+                                        <div class="alert alert-danger invalid-feedback">{{ $errors->first('old_password') }}
                                         </div>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label>New Password</label>
-                                    <input type="password" class="form-control @error('newpassword') is-invalid @enderror"
-                                        name="newpassword" placeholder="Enter your new password">
-                                    @error('newpassword')
-                                        <div class="alert alert-danger invalid-feedback">{{ $errors->first('newpassword') }}
+                                    <input type="password" class="form-control @error('new_password') is-invalid @enderror"
+                                        name="new_password" placeholder="Enter your new password">
+                                    @error('new_password')
+                                        <div class="alert alert-danger invalid-feedback">{{ $errors->first('new_password') }}
                                         </div>
                                     @enderror
                                 </div>
