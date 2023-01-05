@@ -24,7 +24,15 @@
                     <div class="card card-table flex-fill">
                         <div class="card-header">
                             <h4 class="card-title float-start mr-auto">Danh sách User</h4>
-                            @include('partial.search')
+                            <x-search-form>
+                                <x-slot:slot>
+                                    <select name="role" id="role" class="form-select">
+                                        <option></option>
+                                        <option value="1" {{ request()->role == 1 ? 'selected' : '' }}>Admin</option>
+                                        <option value="3" {{ request()->role == 3 ? 'selected' : '' }}>Student</option>
+                                    </select>
+                                </x-slot:slot>
+                            </x-search-form>
                             <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>

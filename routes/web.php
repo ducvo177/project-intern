@@ -27,5 +27,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->midd
 
 Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
     Route::resource('user', App\Http\Controllers\Backend\UserController::class);
+    Route::resource('course', App\Http\Controllers\Backend\CourseController::class);
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 })->name('admin');

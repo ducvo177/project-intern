@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\Schema;
 class UserRepository extends BaseRepository
 {
     protected $model;
-    public const SORT_TYPES = ['desc', 'asc'];
-    public const PER_PAGE = 5;
 
     public function __construct(User $model)
     {
