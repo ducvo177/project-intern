@@ -24,8 +24,7 @@ class CourseRepository extends BaseRepository
 
         if ($keyword) {
             $query->where(function ($query) use ($keyword) {
-                $query->where('name', 'LIKE', "%{$keyword}%")
-                    ->orWhere('category_id', 'LIKE', "%{$keyword}%");
+                $query->where('name', 'LIKE', "%{$keyword}%");
             });
         }
 
