@@ -15,5 +15,4 @@ class CategoryRepository extends BaseRepository
     {
         return $this->model->get();
     }
-
 }

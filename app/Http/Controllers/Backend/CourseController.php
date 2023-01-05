@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function __construct(CourseRepository $courseRepository,CategoryRepository  $categoryRepository)
+    public function __construct(CourseRepository $courseRepository, CategoryRepository  $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
         $this->courseRepository = $courseRepository;
