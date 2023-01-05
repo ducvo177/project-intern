@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCourseRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CourseRepository;
 use Illuminate\Http\Request;
@@ -25,12 +26,13 @@ class CourseController extends Controller
 
     public function create()
     {
-        //
+       return view('admin.courses.create');
     }
 
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
-        //
+        $inputs = $request->all();
+        dd($inputs);
     }
 
     public function show($id)
