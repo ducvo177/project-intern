@@ -92,15 +92,12 @@
                                                 </td>
                                                 <td>
                                                     <div class="actions d-flex">
-                                                        <a href="{{ route('user.edit', ['user' => $course->id]) }}"
-                                                            class="btn btn-sm bg-success-light me-2">
+                                                        <a href="#">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
-
-                                                        <x-button-delete
-                                                            route="{{ route('user.destroy', ['user' => $course->id]) }}"
-                                                            userId="{{ $course->id }}"
-                                                            currentUserId="{{ Auth::user()->id }}" />
+                                                        <button class="btn btn-sm bg-danger-light" type="submit">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
