@@ -1,7 +1,7 @@
 @csrf
 <div class="form-group">
     <label>Name</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror " name="name "
+    <input type="text" class="form-control @error('name') is-invalid @enderror " name="name"
         placeholder="Enter course name" value="{{ $course->name ?? old('name') }}">
     @error('name')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('name') }}</div>
@@ -40,20 +40,15 @@
     @enderror
 </div>
 <div class="form-group">
-    <label>Create by</label>
-    <input type="text" class="form-control @error('create_by') is-invalid @enderror" name="created_by"
-         value="{{ $course->created_by ?? old('created_by') }}">
-    @error('created_by')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('created_by') }}</div>
-    @enderror
-</div>
-<div class="form-group">
-    <label>Category Id</label>
-    <input type="text" class="form-control @error('category_id') is-invalid @enderror" name="category_id"
-         value="{{ $course->category_id ?? old('category_id') }}">
-    @error('category_id')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('category_id') }}</div>
-    @enderror
+    <label>Category</label>
+    <select name="category" id="category" class="form-select">
+        <option></option>
+        @foreach ($categories as $category)
+            <option value={{ $category->id }}
+                {{ request()->key === $category->id ? 'selected' : '' }}>
+                {{ $category->name }}</option>
+        @endforeach
+    </select>
 </div>
 <div class="form-group">
     <label>Total lessons</label>
