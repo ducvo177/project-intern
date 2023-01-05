@@ -23,18 +23,20 @@
                 <div class="col-md-12 d-flex ">
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h4 class="card-title float-start mr-auto">Danh sách User</h4>
+                            <h4 class="card-title float-start mr-auto">Danh sách Courses</h4>
                             <x-search-form>
                                 <x-slot:slot>
-                                    <select name="role" id="role" class="form-select">
+                                    <select name="category" id="category" class="form-select">
                                         <option></option>
-                                        <option value="1" {{ request()->role == 1 ? 'selected' : '' }}>Admin</option>
-                                        <option value="3" {{ request()->role == 3 ? 'selected' : '' }}>Student</option>
+                                        @foreach ($categories as $category)
+                                            <option value={{ $category->id }}
+                                                {{ request()->key === $category->id ? 'selected' : '' }}>
+                                                {{ $category->name }}</option>
+                                        @endforeach
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-                            <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
-                                        class="fa-solid fa-plus"></i></button></a>
+
                         </div>
                         <div class="card-body">
                             <div class="table-responsive no-radius">
@@ -48,53 +50,54 @@
                                             <th>Name
                                                 <x-sort-link columnName="name" />
                                             </th>
-                                            <th>Phone</th>
-                                            <th> Email
-                                                <x-sort-link columnName="email" />
-                                            </th>
-                                            <th class="text-center">Type</th>
+                                            <th>Category</th>
+                                            <th>Online</th>
+                                            <th> Students</th>
+                                            <th>Lessons</th>
+                                            <th>Sections</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
                                             <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($courses as $course)
                                             <tr>
                                                 <td>
-                                                    <div class="font-weight-600">{{ $user->id }}</div>
+                                                    <div class="font-weight-600">{{ $course->id }}</div>
                                                 </td>
                                                 <td>
-                                                    <a href="{{ route('user.show', ['user' => $user->id]) }}">
-                                                        {{ $user->name }}
-                                                    </a>
+                                                    {{ $course->name }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->phone }}
+                                                    {{ $course->category->name ?? null }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->email }}
-                                                </td>
-                                                <td class="text-center">
-                                                    {{ $user->role_name }}
+                                                    {{ $course->online }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->created_at }}
+                                                    {{ $course->users_count }}
                                                 </td>
                                                 <td>
-                                                    {{ $user->updated_at }}
+                                                    {{ $course->lessons_count }}
+                                                </td>
+                                                <td>
+                                                    {{ $course->sections_count }}
+                                                </td>
+                                                <td>
+                                                    {{ $course->created_at }}
+                                                </td>
+                                                <td>
+                                                    {{ $course->updated_at }}
                                                 </td>
                                                 <td>
                                                     <div class="actions d-flex">
-                                                        <a href="{{ route('user.edit', ['user' => $user->id]) }}"
-                                                            class="btn btn-sm bg-success-light me-2">
+                                                        <a href="#">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
-
-                                                        <x-button-delete
-                                                            route="{{ route('user.destroy', ['user' => $user->id]) }}"
-                                                            userId="{{ $user->id }}"
-                                                            currentUserId="{{ Auth::user()->id }}" />
+                                                        <button class="btn btn-sm bg-danger-light" type="submit">
+                                                            <i class="fa-solid fa-trash"></i>
+                                                        </button>
                                                     </div>
                                                 </td>
                                             </tr>
@@ -103,7 +106,7 @@
                                     </tbody>
                                 </table>
                                 <div class="mt-5">
-                                    {{ $users->appends(request()->all())->links() }}</div>
+                                    {{ $courses->appends(request()->all())->links() }}</div>
                             </div>
                         </div>
                     </div>
