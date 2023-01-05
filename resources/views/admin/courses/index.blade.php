@@ -29,7 +29,7 @@
                                     <select name="category" id="category" class="form-select">
                                         <option></option>
                                         @foreach ($categories as $category)
-                                            <option value={{ $category->id }}
+                                            <option value='{{ $category->id }}'
                                                 {{ request()->key === $category->id ? 'selected' : '' }}>
                                                 {{ $category->name }}</option>
                                         @endforeach

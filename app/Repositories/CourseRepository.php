@@ -20,12 +20,12 @@ class CourseRepository extends BaseRepository
     public function getAll(array $input = [])
     {
         $query = $this->model->query();
-        $keyword = $input['key'] ?? '';
 
-        if ($keyword) {
-            $query->where(function ($query) use ($keyword) {
-                $query->where('name', 'LIKE', "%{$keyword}%");
-            });
+        if (!empty($input['key'])) {
+            $query->where(
+                fn($query) =>
+                $query->where('name', 'LIKE', "%{$input['key']}%")  
+            );
         }
 
         if (!empty($input['category'])) {
