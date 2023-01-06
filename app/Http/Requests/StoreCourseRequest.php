@@ -28,14 +28,14 @@ class StoreCourseRequest extends FormRequest
             'name' => ['required', 'max:255', 'string'],
             'slug' => ['required', 'max:255', 'string', 'unique:courses,slug'],
             'link' => ['required', 'max:255', 'url'],
-            'price' => ['required','numeric','between:0,99.99'],
-            'old_price' => ['required','numeric','between:0,99.99'],
-            'benefits' => ['nullable', 'json'],
-            'description' => ['required','string'],
-            'content' => ['required','string'],
-            'meta_title' => [ 'max:255', 'string'],
-            'meta_desc' => ['max:255', 'string'],
-            'meta_keyword' => [ 'max:255', 'string'],   
+            'price' => ['required', 'numeric', 'between:0,99.99'],
+            'old_price' => ['required', 'numeric', 'between:0,99.99'],
+            'category_id'=>['required'],
+            'description' => ['nullable', 'string'],
+            'content' => ['nullable', 'string'],
+            'meta_title' => ['max:255','nullable', 'string'],
+            'meta_desc' => ['max:255','nullable', 'string'],
+            'meta_keyword' => ['max:255','nullable', 'string'],
         ];
     }
 }

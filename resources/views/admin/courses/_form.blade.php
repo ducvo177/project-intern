@@ -41,13 +41,16 @@
 </div>
 <div class="form-group">
     <label>Category</label>
-    <select name="category_id" id="category_id" class="form-select">
+    <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror">
         <option></option>
         @foreach ($categories as $category)
             <option value='{{ $category->id }}' {{ request()->category_id === $category->id ? 'selected' : '' }}>
                 {{ $category->name }}</option>
         @endforeach
     </select>
+    @error('category_id')
+        <div class="alert alert-danger invalid-feedback">{{ $errors->first('category_id') }}</div>
+    @enderror
 </div>
 <div class="form-group">
     <label>Add New Benefit: </label>
