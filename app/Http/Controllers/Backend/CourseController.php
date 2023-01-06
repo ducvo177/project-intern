@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreCourseRequest;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CourseRepository;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    protected $categoryRepository;
+    protected $courseRepository;
+
     public function __construct(CourseRepository $courseRepository, CategoryRepository  $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -25,12 +29,13 @@ class CourseController extends Controller
 
     public function create()
     {
-        //
+       return view('admin.courses.create',['categories'=>$this->categoryRepository->getAll()]);
     }
 
-    public function store(Request $request)
+    public function store(StoreCourseRequest $request)
     {
-        //
+        $this->courseRepository->save($request->all());
+        return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
     }
 
     public function show($id)
