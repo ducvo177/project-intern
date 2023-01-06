@@ -21,6 +21,6 @@ class Attachment extends Model
 
     public function course()
     {
-      return $this->morphOne(Course::class, 'productable');
+        return $this->morphOne(Course::class, 'productable');
     }
 }

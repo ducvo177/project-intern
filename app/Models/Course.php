@@ -54,7 +54,7 @@ class Course extends Model
 
     public function courseable()
     {
-      return $this->morphTo();
+        return $this->morphTo();
     }
 
     public function sections()

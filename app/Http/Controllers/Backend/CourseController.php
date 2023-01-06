@@ -5,8 +5,6 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Models\Attachment;
-use App\Models\Course;
-use App\Repositories\AttachmentRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CourseRepository;
 use Illuminate\Http\Request;
@@ -15,13 +13,11 @@ class CourseController extends Controller
 {
     protected $categoryRepository;
     protected $courseRepository;
-    protected $attachmentRepository;
 
-    public function __construct(CourseRepository $courseRepository, CategoryRepository  $categoryRepository, AttachmentRepository $attachmentRepository)
+    public function __construct(CourseRepository $courseRepository, CategoryRepository  $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
         $this->courseRepository = $courseRepository;
-        $this->attachmentRepository = $attachmentRepository;
     }
 
     public function index()
@@ -57,7 +53,7 @@ class CourseController extends Controller
                 'size' => $file->getSize(),
             ]);
         }
-        
+
         return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
     }
 
