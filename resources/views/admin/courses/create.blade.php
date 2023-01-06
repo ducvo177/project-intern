@@ -21,7 +21,7 @@
                             <h4 class="card-title ">Add new Couse</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{ route('course.store') }}" method="POST">
+                            <form action="{{ route('course.store') }}" method="POST" enctype="multipart/form-data">
                                 @include('admin.courses._form')
                             </form>
                         </div>

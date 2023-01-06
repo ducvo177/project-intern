@@ -121,6 +121,13 @@
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_keyword') }}</div>
     @enderror
 </div>
+<div class="form-group">
+    <label>Upload Image: </label>
+    <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo">
+    @error('photo')
+        <div class="alert alert-danger invalid-feedback">{{ $errors->first('photo') }}</div>
+    @enderror
+</div>
 </div>
 <div class="text-center mb-5">
     <button type="submit" class="btn btn-primary">Submit</button>
