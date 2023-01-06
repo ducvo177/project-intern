@@ -29,7 +29,7 @@ class CourseController extends Controller
 
     public function create()
     {
-       return view('admin.courses.create',['categories'=>$this->categoryRepository->getAll()]);
+        return view('admin.courses.create', ['categories'=>$this->categoryRepository->getAll()]);
     }
 
     public function store(StoreCourseRequest $request)

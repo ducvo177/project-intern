@@ -16,7 +16,7 @@ class Course extends Model
         static::creating(function ($model) {
             $model['created_by'] = Auth::user()->id;
 
-            if(!empty($model['benefits'])){
+            if (!empty($model['benefits'])) {
                 $model['benefits'] = json_encode($model['benefits']);
             }
         });
