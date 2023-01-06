@@ -10,7 +10,7 @@ for (var i = 0; i < myNodelist.length; i++) {
 }
 
 // Click on a close button to hide the current list item
-var close = document.getElementsByClassName("close");
+let close = document.getElementsByClassName("close");
 for (var i = 0; i < close.length; i++) {
   close[i].onclick = function() {
     var div = this.parentElement;
@@ -48,7 +48,7 @@ function newElement() {
   span.className = "close";
   span.appendChild(txt);
   li.appendChild(span);
-  
+
   for (i = 0; i < close.length; i++) {
     close[i].onclick = function() {
       var div = this.parentElement;
