@@ -1,15 +1,15 @@
 @csrf
 <div class="form-group">
     <label>Name</label>
-    <input type="text" class="form-control @error('name') is-invalid @enderror " name="name"
-        placeholder="Enter course name" value="{{ $course->name ?? old('name') }}">
+    <input type="text" class="form-control @error('name') is-invalid @enderror " name="name" id="name"
+        onkeyup="ChangeToSlug();" placeholder="Enter course name" value="{{ $course->name ?? old('name') }}">
     @error('name')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('name') }}</div>
     @enderror
 </div>
 <div class="form-group">
     <label>Slug</label>
-    <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug"
+    <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug"
         placeholder="Enter course slug" value="{{ $course->slug ?? old('slug') }}">
     @error('slug')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('slug') }}</div>
@@ -25,8 +25,8 @@
 </div>
 <div class="form-group">
     <label>Price</label>
-    <input type="text" class="form-control @error('price') is-invalid @enderror" name="price"
-        placeholder="x.xx" value="{{ $course->price ?? old('price') }}">
+    <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="x.xx"
+        value="{{ $course->price ?? old('price') }}">
     @error('price')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('price') }}</div>
     @enderror
@@ -41,87 +41,55 @@
 </div>
 <div class="form-group">
     <label>Category</label>
-    <select name="category" id="category" class="form-select">
+    <select name="category_id" id="category_id" class="form-select">
         <option></option>
         @foreach ($categories as $category)
-            <option value={{ $category->id }}
-                {{ request()->key === $category->id ? 'selected' : '' }}>
+            <option value='{{ $category->id }}' {{ request()->category_id === $category->id ? 'selected' : '' }}>
                 {{ $category->name }}</option>
         @endforeach
     </select>
 </div>
 <div class="form-group">
-    <label>Total lessons</label>
-    <input type="text" class="form-control @error('lessons') is-invalid @enderror" name="lessons"
-         value="{{ $course->lessons ?? old('lessons') }}">
-    @error('lessons')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('lessons') }}</div>
-    @enderror
-</div>
-<div class="form-group">
-    <label>View Count</label>
-    <input type="text" class="form-control @error('view_count') is-invalid @enderror" name="view_count"
-         value="{{ $course->view_count ?? old('view_count') }}">
-    @error('view_count')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
-    @enderror
+    <label>Add New Benefit: </label>
+    <input type="text" id="myInput" placeholder="Enter benefit..." class="form-control">
+    <span onclick="newElement()" class="addBtn btn btn-primary">Add</span>
+    <ul id="benefitList">
+    </ul>
 </div>
 <div class="form-group">
     <label>Benefits</label>
-    <input type="text" class="form-control @error('benefits') is-invalid @enderror" name="view_count"
-         value="{{ $course->view_count ?? old('view_count') }}">
-    @error('view_count')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
+    <input type="text" class="form-control @error('benefits') is-invalid @enderror" name="benefits" id="benefits"
+        placeholder="x.xx" value="{{ $course->benefits ?? old('benefits') }}">
+    @error('benefits')
+        <div class="alert alert-danger invalid-feedback">{{ $errors->first('benefits') }}</div>
     @enderror
-</div>
-<div class="form-group">
-    <label>FQA</label>
-    <input type="text" class="form-control @error('view_count') is-invalid @enderror" name="view_count"
-         value="{{ $course->view_count ?? old('view_count') }}">
-    @error('view_count')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
-    @enderror
-</div>
-<div class="form-group">
-    <label class="d-block">Is Feature:</label>
-    <div class="form-check form-check-inline @error('is_feature') is-invalid @enderror">
-    <input class="form-check-input" type="radio" name="is_feature" id="is_feature_true" value="1">
-    <label class="form-check-label" for="is_feature_true">True</label>
-    </div>
-    <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="is_feature" id="is_feature_false" value="0">
-    <label class="form-check-label" for="is_feature_false">False</label>
-    </div>
-    @error('is_feature')
-    <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
-@enderror
 </div>
 <div class="form-group">
     <label class="d-block">Is Online:</label>
     <div class="form-check form-check-inline @error('is_online') is-invalid @enderror">
-    <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1">
-    <label class="form-check-label" for="is_online_true">True</label>
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1">
+        <label class="form-check-label" for="is_online_true">True</label>
     </div>
     <div class="form-check form-check-inline">
-    <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0">
-    <label class="form-check-label" for="is_online_false">False</label>
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0">
+        <label class="form-check-label" for="is_online_false">False</label>
     </div>
     @error('is_online')
-    <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
-@enderror
+        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
+    @enderror
 </div>
 <div class="form-group">
     <label>Description</label>
-    <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="description" placeholder="Enter description"
-         value="{{ $course->description ?? old('description') }}"></textarea>
+    <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="description"
+        placeholder="Enter description" value="{{ $course->description ?? old('description') }}"></textarea>
     @error('description')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('description') }}</div>
     @enderror
 </div>
 <div class="form-group">
     <label>Content</label>
-    <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="content" placeholder="Enter course content"
-    value="{{ $course->content ?? old('content') }}"></textarea>
+    <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="content"
+        placeholder="Enter course content" value="{{ $course->content ?? old('content') }}"></textarea>
     @error('content')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('content') }}</div>
     @enderror
@@ -129,7 +97,7 @@
 <div class="form-group">
     <label>Meta Title</label>
     <input type="text" class="form-control @error('meta_title') is-invalid @enderror" name="meta_title"
-         value="{{ $course->meta_title ?? old('meta_title') }}">
+        value="{{ $course->meta_title ?? old('meta_title') }}">
     @error('meta_title')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_title') }}</div>
     @enderror
@@ -137,7 +105,7 @@
 <div class="form-group">
     <label>Meta Desc</label>
     <input type="text" class="form-control @error('meta_desc') is-invalid @enderror" name="meta_desc"
-         value="{{ $course->meta_desc ?? old('meta_desc') }}">
+        value="{{ $course->meta_desc ?? old('meta_desc') }}">
     @error('meta_desc')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_desc') }}</div>
     @enderror
@@ -145,7 +113,7 @@
 <div class="form-group">
     <label>Meta Keyword</label>
     <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" name="meta_keyword"
-         value="{{ $course->meta_keyword ?? old('meta_keyword') }}">
+        value="{{ $course->meta_keyword ?? old('meta_keyword') }}">
     @error('meta_keyword')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_keyword') }}</div>
     @enderror
@@ -154,3 +122,7 @@
 <div class="text-center mb-5">
     <button type="submit" class="btn btn-primary">Submit</button>
 </div>
+@push('scripts')
+    <script src="{{ asset('/assets/js/benefit.js') }}"></script>
+    <script src="{{ asset('/assets/js/slug.js') }}"></script>
+@endpush

@@ -118,6 +118,4 @@
         </div>
     </div>
 @endsection
-@push('scripts')
-    <script src="{{ asset('/assets/js/user.js') }}"></script>
-@endpush
+

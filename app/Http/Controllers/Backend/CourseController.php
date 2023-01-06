@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
+    protected $categoryRepository;
+    protected $courseRepository;
+
     public function __construct(CourseRepository $courseRepository, CategoryRepository  $categoryRepository)
     {
         $this->categoryRepository = $categoryRepository;
@@ -31,8 +34,8 @@ class CourseController extends Controller
 
     public function store(StoreCourseRequest $request)
     {
-        $inputs = $request->all();
-        dd($inputs);
+        $this->courseRepository->save($request->all());
+        return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
     }
 
     public function show($id)
