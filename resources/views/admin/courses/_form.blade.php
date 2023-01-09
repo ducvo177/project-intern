@@ -44,7 +44,7 @@
     <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror">
         <option></option>
         @foreach ($categories as $category)
-            <option value='{{ $category->id }}' {{ request()->category_id === $category->id ? 'selected' : '' }}>
+            <option value='{{ $category->id }}' {{ $course->category_id === $category->id ? 'selected' : '' }}>
                 {{ $category->name }}</option>
         @endforeach
     </select>
@@ -69,22 +69,24 @@
 </div>
 <div class="form-group">
     <label class="d-block">Is Online:</label>
-    <div class="form-check form-check-inline @error('is_online') is-invalid @enderror">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1"
+            @if ($course->is_online == 1) checked="checked" @endif>
         <label class="form-check-label" for="is_online_true">True</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0">
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0"
+            @if ($course->is_online == 0)  checked="checked" @endif>
         <label class="form-check-label" for="is_online_false">False</label>
     </div>
     @error('is_online')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $errors->first('is_online') }}</div>
     @enderror
 </div>
 <div class="form-group">
     <label>Description</label>
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="description"
-        placeholder="Enter description" value="{{ $course->description ?? old('description') }}"></textarea>
+        placeholder="Enter description">{{ $course->description ?? old('description') }}</textarea>
     @error('description')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('description') }}</div>
     @enderror
@@ -92,7 +94,7 @@
 <div class="form-group">
     <label>Content</label>
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="content"
-        placeholder="Enter course content" value="{{ $course->content ?? old('content') }}"></textarea>
+        placeholder="Enter course content">{{ $course->content ?? old('content') }}</textarea>
     @error('content')
         <div class="alert alert-danger invalid-feedback">{{ $errors->first('content') }}</div>
     @enderror

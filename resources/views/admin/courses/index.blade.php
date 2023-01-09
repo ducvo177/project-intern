@@ -93,7 +93,8 @@
                                                 </td>
                                                 <td>
                                                     <div class="actions d-flex">
-                                                        <a href="#">
+                                                        <a href="{{ route('course.edit', ['course' => $course->id]) }}"
+                                                            class="btn btn-sm bg-success-light me-2">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
                                                         <button class="btn btn-sm bg-danger-light" type="submit">

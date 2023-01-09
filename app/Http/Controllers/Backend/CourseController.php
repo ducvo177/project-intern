@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
+use App\Http\Requests\UpdateCourseRequest;
 use App\Repositories\AttachmentRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CourseRepository;
@@ -67,12 +68,14 @@ class CourseController extends Controller
 
     public function edit($id)
     {
-        //
+        return view('admin.courses.edit', ['course' => $this->courseRepository->findById($id), 'categories' => $this->categoryRepository->getAll()]);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateCourseRequest $request, $id)
     {
-        //
+        $inputs = $request->all();
+        $this->courseRepository->save($inputs, ['id' => $id]);
+        return redirect()->route('course.index')->with('notification', 'Update course successfully!!');
     }
 
     public function destroy($id)
