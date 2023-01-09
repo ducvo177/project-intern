@@ -36,7 +36,8 @@
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-
+                            <a href="{{ route('course.create') }}"><button class="btn btn-primary">Create new courses <i
+                                class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive no-radius">
