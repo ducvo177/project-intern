@@ -52,9 +52,9 @@ class Course extends Model
         );
     }
 
-    public function courseable()
+    public function attachment()
     {
-        return $this->morphTo();
+        return $this->morphOne(Attachment::class, 'attachable');
     }
 
     public function sections()

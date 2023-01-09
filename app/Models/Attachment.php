@@ -19,8 +19,8 @@ class Attachment extends Model
         'size',
     ];
 
-    public function course()
+    public function attachable()
     {
-        return $this->morphOne(Course::class, 'courseable');
+        return $this->morphTo();
     }
 }

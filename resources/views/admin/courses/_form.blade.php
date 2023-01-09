@@ -133,6 +133,6 @@
     <button type="submit" class="btn btn-primary">Submit</button>
 </div>
 @push('scripts')
-    <script src="{{ asset('/assets/js/benefit.js') }}"></script>
+    <script src="{{ asset('/assets/js/benefits.js') }}"></script>
     <script src="{{ asset('/assets/js/slug.js') }}"></script>
 @endpush
