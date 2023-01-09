@@ -40,7 +40,7 @@ class CourseController extends Controller
     public function store(StoreCourseRequest $request)
     {
         $inputs = $request->all();
-        DB::transaction(function () use ($inputs,$request) {
+        DB::transaction(function () use ($inputs, $request) {
             $course = $this->courseRepository->save($inputs);
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
