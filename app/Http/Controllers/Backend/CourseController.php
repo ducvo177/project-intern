@@ -44,17 +44,16 @@ class CourseController extends Controller
             $course = $this->courseRepository->save($inputs);
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
-                $ext = $inputs['photo']->extension();
-                $file_name = time() . '-' . 'course.' . $ext;
-                $request->file('photo')->storeAs('public/image', $file_name);
-                $inputs['file_path'] = Storage::url($file_name);
-                $inputs['attachable_type'] = $inputs['name'];
-                $inputs['file_name'] = $file_name;
-                $inputs['attachable_id'] = $course->id;
-                $inputs['extention'] = $ext;
-                $inputs['mime_type'] = $file->getMimeType();
-                $inputs['size'] = $file->getSize();
-                $this->attachmentRepository->save($inputs);
+                $file_name = time() . '-' . 'course.' . $inputs['photo']->extension();
+                $this->attachmentRepository->save([
+                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $file_name),
+                    'attachable_type' => Course::class,
+                    'file_name' => $file_name,
+                    'attachable_id' => $course->id,
+                    'extention' => $inputs['photo']->extension(),
+                    'mime_type' => $file->getMimeType(),
+                    'size' => $file->getSize(),
+                ]);
             }
         });
         return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
