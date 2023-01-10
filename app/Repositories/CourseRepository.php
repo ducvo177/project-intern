@@ -23,7 +23,7 @@ class CourseRepository extends BaseRepository
 
         if (!empty($input['key'])) {
             $query->where(
-                fn($query) =>
+                fn ($query) =>
                 $query->where('name', 'LIKE', "%{$input['key']}%")
             );
         }
