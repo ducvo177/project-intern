@@ -4,7 +4,7 @@
     <input type="text" class="form-control @error('name') is-invalid @enderror " name="name" id="name"
         onkeyup="ChangeToSlug();" placeholder="Enter course name" value="{{ $course->name ?? old('name') }}">
     @error('name')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('name') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -12,7 +12,7 @@
     <input type="text" class="form-control @error('slug') is-invalid @enderror" name="slug" id="slug"
         placeholder="Enter course slug" value="{{ $course->slug ?? old('slug') }}">
     @error('slug')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('slug') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -20,7 +20,7 @@
     <input type="text" class="form-control @error('link') is-invalid @enderror" name="link"
         placeholder="http://www.abc.com.vn" value="{{ $course->link ?? old('link') }}">
     @error('link')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('link') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -28,7 +28,7 @@
     <input type="text" class="form-control @error('price') is-invalid @enderror" name="price" placeholder="x.xx"
         value="{{ $course->price ?? old('price') }}">
     @error('price')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('price') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -36,7 +36,7 @@
     <input type="text" class="form-control @error('old_price') is-invalid @enderror" name="old_price"
         placeholder="x.xx" value="{{ $course->old_price ?? old('old_price') }}">
     @error('old_price')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('old_price') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -44,12 +44,18 @@
     <select name="category_id" id="category_id" class="form-select @error('category_id') is-invalid @enderror">
         <option></option>
         @foreach ($categories as $category)
-            <option value='{{ $category->id }}' {{ request()->category_id === $category->id ? 'selected' : '' }}>
-                {{ $category->name }}</option>
+            @if (!empty($course->category_id))
+                <option value="{{ $category->id }}"
+                    {{ $course->category_id == $category->id || old('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}</option>
+            @else
+                <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                    {{ $category->name }}</option>
+            @endif
         @endforeach
     </select>
     @error('category_id')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('category_id') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -64,21 +70,23 @@
     <input type="text" class="form-control @error('benefits') is-invalid @enderror" name="benefits" id="benefits"
         placeholder="x.xx" value="{{ $course->benefits ?? old('benefits') }}">
     @error('benefits')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('benefits') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
     <label class="d-block">Is Online:</label>
-    <div class="form-check form-check-inline @error('is_online') is-invalid @enderror">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1">
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1"
+            @if (old('is_online') == '1') checked @endif>
         <label class="form-check-label" for="is_online_true">True</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0">
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0"
+            @if (old('is_online') == '0') checked @endif>
         <label class="form-check-label" for="is_online_false">False</label>
     </div>
     @error('is_online')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('view_count') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -86,7 +94,7 @@
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="description"
         placeholder="Enter description" value="{{ $course->description ?? old('description') }}"></textarea>
     @error('description')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('description') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -94,7 +102,7 @@
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="content"
         placeholder="Enter course content" value="{{ $course->content ?? old('content') }}"></textarea>
     @error('content')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('content') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -102,7 +110,7 @@
     <input type="text" class="form-control @error('meta_title') is-invalid @enderror" name="meta_title"
         value="{{ $course->meta_title ?? old('meta_title') }}">
     @error('meta_title')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_title') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -110,7 +118,7 @@
     <input type="text" class="form-control @error('meta_desc') is-invalid @enderror" name="meta_desc"
         value="{{ $course->meta_desc ?? old('meta_desc') }}">
     @error('meta_desc')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_desc') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
@@ -118,15 +126,17 @@
     <input type="text" class="form-control @error('meta_keyword') is-invalid @enderror" name="meta_keyword"
         value="{{ $course->meta_keyword ?? old('meta_keyword') }}">
     @error('meta_keyword')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('meta_keyword') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
 </div>
 <div class="form-group">
     <label>Upload Image: </label>
-    <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo">
+    <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo"
+        onchange="loadFile(event)">
     @error('photo')
-        <div class="alert alert-danger invalid-feedback">{{ $errors->first('photo') }}</div>
+        <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
+    <img id="output" class="w-25 mt-2" />
 </div>
 </div>
 <div class="text-center mb-5">
@@ -135,4 +145,13 @@
 @push('scripts')
     <script src="{{ asset('/assets/js/benefits.js') }}"></script>
     <script src="{{ asset('/assets/js/slug.js') }}"></script>
-@endpush
+    <script>
+        var loadFile = function(event) {
+            var output = document.getElementById('output');
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function() {
+                URL.revokeObjectURL(output.src)
+            }
+        };
+    </script>
+@endpush    

@@ -32,9 +32,11 @@ class StoreCourseRequest extends FormRequest
             'category_id'=>['required'],
             'description' => ['nullable', 'string'],
             'content' => ['nullable', 'string'],
-            'meta_title' => ['max:255','nullable', 'string'],
-            'meta_desc' => ['max:255','nullable', 'string'],
-            'meta_keyword' => ['max:255','nullable', 'string'],
+            'is_online'=>['required', 'boolean'],
+            'meta_title' => ['required','max:255','nullable', 'string'],
+            'meta_desc' => ['required','max:255','nullable', 'string'],
+            'meta_keyword' => ['required','max:255','nullable', 'string'],
+            'photo' => ['nullable','image','mimes:jpg,png,jpeg','max:2048'],
         ];
     }
 }
