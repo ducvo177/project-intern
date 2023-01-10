@@ -25,6 +25,18 @@ class CourseController extends Controller
         $this->attachmentRepository = $attachmentRepository;
     }
 
+    protected function savePhoto($file, $id)
+    {
+        $this->attachmentRepository->save([
+            'file_path' =>  Storage::putFileAs('public/attachments', $file, $file->hashName()),
+            'attachable_type' => Course::class,
+            'file_name' => $file->hashName(),
+            'extention' => $file->extension(),
+            'mime_type' => $file->getMimeType(),
+            'size' => $file->getSize(),
+        ], ['attachable_id' => $id]);
+    }
+
     public function index()
     {
         return view('admin.courses.index', [
@@ -45,15 +57,7 @@ class CourseController extends Controller
             $course = $this->courseRepository->save($inputs);
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
-                $this->attachmentRepository->save([
-                    'file_path' =>  Storage::putFileAs('public/attachments', $file, $file->hashName()),
-                    'attachable_type' => Course::class,
-                    'file_name' => $file->hashName(),
-                    'attachable_id' => $course->id,
-                    'extention' => $file->extension(),
-                    'mime_type' => $file->getMimeType(),
-                    'size' => $file->getSize(),
-                ]);
+                $this->savePhoto($file, $course->id);
             }
         });
         return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
@@ -66,7 +70,7 @@ class CourseController extends Controller
 
     public function edit($id)
     {
-        return view('admin.courses.edit', ['course' => $this->courseRepository->findById($id), 'categories' => $this->categoryRepository->getAll()]);
+        return view('admin.courses.edit', ['course' => $this->courseRepository->findById($id, Course::class), 'categories' => $this->categoryRepository->getAll()]);
     }
 
     public function update(UpdateCourseRequest $request, $id)
@@ -79,14 +83,7 @@ class CourseController extends Controller
                 if (Storage::exists($inputs['old_photo'])) {
                     Storage::delete($inputs['old_photo']);
                 }
-                $this->attachmentRepository->save([
-                    'file_path' =>  Storage::putFileAs('public/attachments', $file, $file->hashName()),
-                    'attachable_type' => Course::class,
-                    'file_name' => $file->hashName(),
-                    'extention' => $file->extension(),
-                    'mime_type' => $file->getMimeType(),
-                    'size' => $file->getSize(),
-                ], ['attachable_id' => $id]);
+                $this->savePhoto($file, $id);
             }
         });
         return redirect()->route('course.index')->with('notification', 'Update course successfully!!');

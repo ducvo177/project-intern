@@ -19,4 +19,9 @@ class BaseRepository
     {
         return $this->model->updateOrCreate($conditions, $inputs);
     }
+
+    public function findById($id, $model)
+    {
+        return $model::find($id);
+    }
 }
