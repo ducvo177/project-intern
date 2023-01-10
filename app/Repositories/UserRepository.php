@@ -42,5 +42,4 @@ class UserRepository extends BaseRepository
 
         return $query->paginate(static::PER_PAGE);
     }
-
 }
