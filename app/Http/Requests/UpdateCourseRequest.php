@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class UpdateCourseRequest extends FormRequest
@@ -25,7 +26,7 @@ class UpdateCourseRequest extends FormRequest
     {
         return [
             'name' => ['required', 'max:255', 'string'],
-            'slug' => ['required', 'max:255', 'string', 'unique:courses,slug'],
+            'slug' => ['required', 'max:255', 'string', Rule::unique('courses')->ignore($this->route('course'))],
             'link' => ['required', 'max:255', 'url'],
             'price' => ['required', 'numeric', 'between:0,99.99'],
             'old_price' => ['required', 'numeric', 'between:0,99.99'],

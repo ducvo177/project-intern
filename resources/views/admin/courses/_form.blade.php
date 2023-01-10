@@ -92,7 +92,7 @@
 <div class="form-group">
     <label>Description</label>
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="description"
-        placeholder="Enter description" value="{{ $course->description ?? old('description') }}"></textarea>
+        placeholder="Enter description">{{ $course->description ?? old('description') }}</textarea>
     @error('description')
         <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
@@ -100,7 +100,7 @@
 <div class="form-group">
     <label>Content</label>
     <textarea rows="4" cols="5" class="form-control @error('content') is-invalid @enderror" name="content"
-        placeholder="Enter course content" value="{{ $course->content ?? old('content') }}"></textarea>
+        placeholder="Enter course content" >{{ $course->content ?? old('content') }}</textarea>
     @error('content')
         <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
@@ -136,7 +136,8 @@
     @error('photo')
         <div class="alert alert-danger invalid-feedback">{{ $message }}</div>
     @enderror
-    <img id="output" class="w-25 mt-2" />
+    {{-- {{ dd($course->attachment) }} --}}
+    <img id="output" class="w-25 mt-2" src="{{ asset('storage/attachments/'.$course->attachment) }}"/>
 </div>
 </div>
 <div class="text-center mb-5">
