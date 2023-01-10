@@ -44,11 +44,10 @@ class CourseController extends Controller
             $course = $this->courseRepository->save($inputs);
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
-                $file_name = time() . '-' . 'course.' . $inputs['photo']->extension();
                 $this->attachmentRepository->save([
-                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $file_name),
+                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $inputs['photo']->hashName()),
                     'attachable_type' => Course::class,
-                    'file_name' => $file_name,
+                    'file_name' => $inputs['photo']->hashName(),
                     'attachable_id' => $course->id,
                     'extention' => $inputs['photo']->extension(),
                     'mime_type' => $file->getMimeType(),
