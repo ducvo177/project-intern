@@ -24,7 +24,7 @@ class CourseRepository extends BaseRepository
         if (!empty($input['key'])) {
             $query->where(
                 fn($query) =>
-                $query->where('name', 'LIKE', "%{$input['key']}%")  
+                $query->where('name', 'LIKE', "%{$input['key']}%")
             );
         }
 
@@ -43,5 +43,10 @@ class CourseRepository extends BaseRepository
 
         $query->withCount(['lessons','sections','users'])->with('category');
         return $query->paginate(static::PER_PAGE);
+    }
+
+    public function findById($id)
+    {
+        return Course::find($id);
     }
 }
