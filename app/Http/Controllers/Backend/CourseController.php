@@ -76,6 +76,9 @@ class CourseController extends Controller
             $this->courseRepository->save($inputs, ['id' => $id]);
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
+                if (Storage::exists($inputs['old_photo'])) {
+                    Storage::delete($inputs['old_photo']);
+                }
                 $this->attachmentRepository->save([
                     'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $inputs['photo']->hashName()),
                     'attachable_type' => Course::class,
