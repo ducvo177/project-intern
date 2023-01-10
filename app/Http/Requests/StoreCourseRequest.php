@@ -36,7 +36,7 @@ class StoreCourseRequest extends FormRequest
             'meta_title' => ['required','max:255','nullable', 'string'],
             'meta_desc' => ['required','max:255','nullable', 'string'],
             'meta_keyword' => ['required','max:255','nullable', 'string'],
-            'photo' => ['nullable','image','mimes:jpg,png,jpeg','max:2048'],
+            'photo' => ['required','image','mimes:jpg,png,jpeg','max:2048'],
         ];
     }
 }

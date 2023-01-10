@@ -5,10 +5,10 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseRequest;
 use App\Http\Requests\UpdateCourseRequest;
+use App\Models\Course;
 use App\Repositories\AttachmentRepository;
 use App\Repositories\CategoryRepository;
 use App\Repositories\CourseRepository;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -72,7 +72,20 @@ class CourseController extends Controller
     public function update(UpdateCourseRequest $request, $id)
     {
         $inputs = $request->all();
-        $this->courseRepository->save($inputs, ['id' => $id]);
+        DB::transaction(function () use ($inputs, $request, $id) {
+            $this->courseRepository->save($inputs, ['id' => $id]);
+            if ($request->has('photo')) {
+                $file = $inputs['photo'];
+                $this->attachmentRepository->save([
+                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $inputs['photo']->hashName()),
+                    'attachable_type' => Course::class,
+                    'file_name' => $inputs['photo']->hashName(),
+                    'extention' => $inputs['photo']->extension(),
+                    'mime_type' => $file->getMimeType(),
+                    'size' => $file->getSize(),
+                ], ['attachable_id' => $id]);
+            }
+        });
         return redirect()->route('course.index')->with('notification', 'Update course successfully!!');
     }
 
