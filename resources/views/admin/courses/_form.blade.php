@@ -76,13 +76,13 @@
 <div class="form-group">
     <label class="d-block">Is Online:</label>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value="1"
-            @if (old('is_online') == '1') checked @endif>
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_true" value=1
+            @if (old('is_online')||$course->is_online === 1) checked @endif>
         <label class="form-check-label" for="is_online_true">True</label>
     </div>
     <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value="0"
-            @if (old('is_online') == '0') checked @endif>
+        <input class="form-check-input" type="radio" name="is_online" id="is_online_false" value=0
+            @if (old('is_online')||$course->is_online == 0) checked @endif>
         <label class="form-check-label" for="is_online_false">False</label>
     </div>
     @error('is_online')
@@ -154,4 +154,4 @@
             }
         };
     </script>
-@endpush    
+@endpush
