@@ -46,11 +46,11 @@ class CourseController extends Controller
             if ($request->has('photo')) {
                 $file = $inputs['photo'];
                 $this->attachmentRepository->save([
-                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $inputs['photo']->hashName()),
+                    'file_path' =>  Storage::putFileAs('public/attachments', $file, $file->hashName()),
                     'attachable_type' => Course::class,
-                    'file_name' => $inputs['photo']->hashName(),
+                    'file_name' => $file->hashName(),
                     'attachable_id' => $course->id,
-                    'extention' => $inputs['photo']->extension(),
+                    'extention' => $file->extension(),
                     'mime_type' => $file->getMimeType(),
                     'size' => $file->getSize(),
                 ]);
@@ -80,10 +80,10 @@ class CourseController extends Controller
                     Storage::delete($inputs['old_photo']);
                 }
                 $this->attachmentRepository->save([
-                    'file_path' =>  Storage::putFileAs('public/attachments', $inputs['photo'], $inputs['photo']->hashName()),
+                    'file_path' =>  Storage::putFileAs('public/attachments', $file, $file->hashName()),
                     'attachable_type' => Course::class,
-                    'file_name' => $inputs['photo']->hashName(),
-                    'extention' => $inputs['photo']->extension(),
+                    'file_name' => $file->hashName(),
+                    'extention' => $file->extension(),
                     'mime_type' => $file->getMimeType(),
                     'size' => $file->getSize(),
                 ], ['attachable_id' => $id]);
