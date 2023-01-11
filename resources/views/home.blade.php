@@ -5,6 +5,8 @@
         @if (session()->has('notification'))
             <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
         @endif
+        <a href={{ route('cart') }} class="btn btn-success">Your Cart <i
+            class="fa-solid fa-cart-shopping"></i></a>
         <div class="row justify-content-center">
             <div class="d-flex ">
                 @foreach ($courses as $course)
