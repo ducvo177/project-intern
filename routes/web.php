@@ -32,3 +32,6 @@ Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
     Route::post('/update-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'updatePassword'])->name('update_password');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 })->name('admin');
+
+Route::get('/cart', [App\Http\Controllers\Backend\CartController::class, 'index'])->name('cart');
+Route::get('/add-to-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'addToCart'])->name('add-to-cart');

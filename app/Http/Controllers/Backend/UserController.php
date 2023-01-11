@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Auth;
 class UserController extends Controller
 {
     protected $userRepository;
+    protected $courseRepository;
 
     public function __construct(UserRepository $userRepository, CourseRepository $courseRepository)
     {
