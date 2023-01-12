@@ -35,3 +35,5 @@ Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
 
 Route::get('/cart', [App\Http\Controllers\Backend\CartController::class, 'index'])->name('cart');
 Route::get('/add-to-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/delete-from-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'deleteCourse'])->name('delete-from-cart');
+Route::get('/delete-all', [App\Http\Controllers\Backend\CartController::class, 'deleteAll'])->name('delete-all');
