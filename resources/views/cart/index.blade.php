@@ -35,20 +35,20 @@
                                                     <h5 class="text-black mb-0">{{ $cartItem['name'] }}</h5>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <button class="btn btn-link px-2"
+                                                    <span class="btn btn-link px-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fas fa-minus"></i>
-                                                    </button>
+                                                    </span>
                                                     <input min="0" name="quantity[]"
                                                         value="{{ $cartItem['quantity'] }}" type="number"
                                                         class="form-control form-control-sm" />
-                                                    <button class="btn btn-link px-2"
+                                                    <span class="btn btn-link px-2"
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
                                                         <i class="fas fa-plus"></i>
-                                                    </button>
+                                                    </span>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">{{ $cartItem['price'] }}</h6>
+                                                    <h6 class="mb-0">{{ $cartItem['quantity'] * $cartItem['price'] }}</h6>
                                                 </div>
                                                 <div class="col-md-1 col-lg-1 col-xl-1 text-end">
                                                     <a href="{{ route('delete-from-cart', ['id' => $cartItem['id']]) }}"
@@ -76,7 +76,7 @@
                                     <div class="d-flex justify-content-between mb-4">
                                         <h5 class="text-uppercase">Items:</h5>
                                         @if (!empty(session()->get('cart')))
-                                            <h5> {{ $total }} </h5>
+                                            <h5> {{ $total['total'] }} </h5>
                                         @endif
                                     </div>
 
@@ -84,7 +84,7 @@
 
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="text-uppercase">Total price</h5>
-                                        <h5>€ 137.00</h5>
+                                        <h5>{{ $total['totalPrice'] }} $</h5>
                                     </div>
 
                                     <button type="submit" class="btn btn-dark btn-block btn-lg"

@@ -46,10 +46,12 @@ class CartService
     public function total()
     {
         $total = 0;
+        $totalPrice = 0;
         foreach ($this->cart as $cartItem) {
             $total += $cartItem['quantity'];
+            $totalPrice += $cartItem['price'] * $cartItem['quantity'];
         };
-        return $total;
+        return collect(['total' => $total, 'totalPrice' => $totalPrice]);
     }
 
     public function exist($id)
