@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
@@ -36,10 +38,10 @@ class VerificationController extends Controller
         $user = User::find($request->route('id'));
 
         if ($request->route('id') != $user->getKey()) {
-            throw new AuthorizationException;
+            throw new AuthorizationException();
         }
 
-        if ($user->markEmailAsVerified()){
+        if ($user->markEmailAsVerified()) {
             event(new Verified($user));
             auth()->login($user);
         }

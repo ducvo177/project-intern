@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use App\Rules\CheckCorrectPassword;
@@ -26,7 +28,7 @@ class PasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'old_password' => [Password::min(6)->letters()->numbers()->symbols(), new CheckCorrectPassword],
+            'old_password' => [Password::min(6)->letters()->numbers()->symbols(), new CheckCorrectPassword()],
             'new_password' => ['same:password_confirmation', 'different:old_password', 'max:255', Password::min(6)],
             'password_confirmation' => [Password::min(6)->letters()->numbers()->symbols()]
         ];

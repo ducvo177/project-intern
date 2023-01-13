@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
@@ -45,7 +47,7 @@ class VerifyAccount extends Notification implements ShouldQueue
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+        return (new MailMessage())
             ->markdown('mail.verify_mail', ['url' => $this->verificationUrl($notifiable), 'name' => $notifiable->name]);
     }
 }
