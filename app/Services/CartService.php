@@ -12,30 +12,35 @@ class CartService
 
     public function insert($course)
     {
-
-        if ($this->cart->where('id', $course->id)->isNotEmpty()) {
-            $this->cart = $this->cart->map(function ($cartItem) use ($course) {
-                if ($cartItem['id'] == $course->id) {
-                    ++$cartItem['quantity'];
-                }
-                return $cartItem;
-            });
-
-            session()->put('cart', $this->cart);
-        } else {
-            $this->cart->push([
-                'id' => $course->id,
-                'name' => $course->name,
-                'price' => $course->price,
-                'image' => $course->attachment->file_name,
-                'quantity' => 1
-            ]);
-            session()->put('cart', $this->cart);
-        }
+        $this->cart = $this->cart->push([
+            'id' => $course->id,
+            'name' => $course->name,
+            'price' => $course->price,
+            'image' => $course->attachment->file_name,
+            'quantity' => 1
+        ]);
+        session()->put('cart', $this->cart);
     }
 
-    public function update()
+    public function update($course)
     {
+        $this->cart = $this->cart->map(function ($cartItem) use ($course) {
+            if ($cartItem['id'] == $course->id) {
+                ++$cartItem['quantity'];
+            }
+            return $cartItem;
+        });
+
+        session()->put('cart', $this->cart);
+    }
+
+    public function updateQuantity($quantity)
+    {
+        $this->cart = $this->cart->map(function ($cartItem, $key) use ($quantity) {
+            $cartItem['quantity'] = $quantity[$key];
+            return $cartItem;
+        });
+        session()->put('cart', $this->cart);
     }
 
     public function total()
@@ -47,12 +52,9 @@ class CartService
         return $total;
     }
 
-    public function exists($id)
+    public function exist($id)
     {
-        if ($this->cart->where('id', $id)->isNotEmpty()) {
-            dd('This course exists in cart');
-        }
-        dd('This course does not exist in cart');
+        return !$this->cart->where('id', $id)->isEmpty();
     }
 
     public function removeItem($id)

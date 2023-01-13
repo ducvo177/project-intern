@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
+use Illuminate\Http\Client\Request;
 
 class CartController extends Controller
 {
@@ -20,26 +21,44 @@ class CartController extends Controller
 
     public function index()
     {
-        return view('cart.index',['total'=> app(CartService::class)->total()]);
+        return view('cart.index', ['total' => app(CartService::class)->total()]);
     }
 
     public function addToCart($id)
     {
         $course = $this->courseRepository->findById($id, Course::class);
-        if(empty($course)){
+        if (empty($course)) {
             abort(404);
         }
-        app(CartService::class)->insert($course);
 
-        return redirect()->route('home')->with('notification', 'Add course successfully!!');
+        $cartService = app(CartService::class);
+        if ($cartService->exist($course->id)) {
+            $cartService->update($course); // Tăng số lượng lên 1
+            return redirect()->back()->with('notification', 'Product added to cart successfully!');
+        }
+
+        $cartService->insert($course);
+        return redirect()->back()->with('notification', 'Product added to cart successfully!');
     }
+
     public function deleteCourse($id)
     {
+        if (!app(CartService::class)->exist($id)) {
+            abort(404);
+        }
         app(CartService::class)->removeItem($id);
         return redirect()->route('cart')->with('notification', 'Remove course from cart successfully!!');
     }
 
-    public function deleteAll(){
+    public function updateCart()
+    {
+        $quantity = request()->quantity;
+        app(CartService::class)->updateQuantity($quantity);
+        return redirect()->route('cart')->with('notification', 'Update course from cart successfully!!');
+    }
+
+    public function deleteAll()
+    {
         app(CartService::class)->destroy();
         return redirect()->route('cart')->with('notification', 'Delete all cart successfully!!');
     }

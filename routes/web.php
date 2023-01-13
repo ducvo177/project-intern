@@ -19,13 +19,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/email/verify/{id}/{hash}', [VerifycationController::class,'verify'])->middleware(['signed', 'verified'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [VerifycationController::class, 'verify'])->middleware(['signed', 'verified'])->name('verification.verify');
 
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth', 'verified'])->name('home');
 
-Route::prefix('admin')->middleware(['auth','is.admin'])->group(function () {
+Route::prefix('admin')->middleware(['auth', 'is.admin'])->group(function () {
     Route::resource('user', App\Http\Controllers\Backend\UserController::class);
     Route::resource('course', App\Http\Controllers\Backend\CourseController::class);
     Route::get('/change-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showForm'])->name('change_password');
@@ -37,3 +37,4 @@ Route::get('/cart', [App\Http\Controllers\Backend\CartController::class, 'index'
 Route::get('/add-to-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'addToCart'])->name('add-to-cart');
 Route::get('/delete-from-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'deleteCourse'])->name('delete-from-cart');
 Route::get('/delete-all', [App\Http\Controllers\Backend\CartController::class, 'deleteAll'])->name('delete-all');
+Route::post('/update-cart', [App\Http\Controllers\Backend\CartController::class, 'updateCart'])->name('update-cart');
