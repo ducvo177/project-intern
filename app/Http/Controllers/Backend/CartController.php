@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Course;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
-use Illuminate\Http\Client\Request;
 
 class CartController extends Controller
 {

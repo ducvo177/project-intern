@@ -65,6 +65,7 @@ class CartService
         });
         session()->put('cart', $this->cart);
     }
+    
     public function destroy()
     {
         session()->forget('cart');
