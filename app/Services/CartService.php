@@ -45,13 +45,12 @@ class CartService
 
     public function total()
     {
-        $total = 0;
-        $totalPrice = 0;
-        foreach ($this->cart as $cartItem) {
-            $total += $cartItem['quantity'];
-            $totalPrice += $cartItem['price'] * $cartItem['quantity'];
-        };
-        return collect(['total' => $total, 'totalPrice' => $totalPrice]);
+        return $this->cart->count();
+    }
+
+    public function getAll()
+    {
+        return $this->cart;
     }
 
     public function exist($id)

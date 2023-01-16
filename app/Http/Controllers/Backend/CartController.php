@@ -21,7 +21,12 @@ class CartController extends Controller
 
     public function index()
     {
-        return view('cart.index', ['total' => app(CartService::class)->total()]);
+        $totalPrice = 0;
+        foreach (app(CartService::class)->getAll() as $cartItem) {
+            $totalPrice += $cartItem['price'] * $cartItem['quantity'];
+        };
+
+        return view('cart.index', ['total' => app(CartService::class)->total(), 'totalPrice' => $totalPrice]);
     }
 
     public function addToCart($id)
