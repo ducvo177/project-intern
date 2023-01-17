@@ -39,7 +39,7 @@
                                                         onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
                                                         <i class="fas fa-minus"></i>
                                                     </span>
-                                                    <input min="0" name="quantity[]"
+                                                    <input min="0" name="quantity[{{ $cartItem['id'] }}]"
                                                         value="{{ $cartItem['quantity'] }}" type="number"
                                                         class="form-control form-control-sm" />
                                                     <span class="btn btn-link px-2"

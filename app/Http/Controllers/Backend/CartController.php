@@ -31,13 +31,15 @@ class CartController extends Controller
     public function addToCart($id)
     {
         $course = $this->courseRepository->findById($id, Course::class);
+        $cartService = app(CartService::class);
+
         if (empty($course)) {
             abort(404);
         }
 
-        $cartService = app(CartService::class);
+
         if ($cartService->exist($course->id)) {
-            $cartService->update($course); // Tăng số lượng lên 1
+            $cartService->update([$course->id => 1]);
             return redirect()->back()->with('notification', 'Product added to cart successfully!');
         }
 
@@ -50,6 +52,7 @@ class CartController extends Controller
         if (!app(CartService::class)->exist($id)) {
             abort(404);
         }
+
         app(CartService::class)->removeItem($id);
         return redirect()->route('cart')->with('notification', 'Remove course from cart successfully!!');
     }
@@ -57,7 +60,7 @@ class CartController extends Controller
     public function updateCart()
     {
         $quantity = request()->quantity;
-        app(CartService::class)->updateQuantity($quantity);
+        app(CartService::class)->update($quantity);
         return redirect()->route('cart')->with('notification', 'Update course from cart successfully!!');
     }
 

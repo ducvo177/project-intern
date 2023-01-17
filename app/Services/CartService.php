@@ -22,25 +22,26 @@ class CartService
         session()->put('cart', $this->cart);
     }
 
-    public function update($course)
+    public function update(array $quantity)
     {
-        $this->cart = $this->cart->map(function ($cartItem) use ($course) {
-            if ($cartItem['id'] == $course->id) {
-                ++$cartItem['quantity'];
-            }
-            return $cartItem;
-        });
+        if (count($quantity) == 1) {
+            $this->cart = $this->cart->map(function ($cartItem) use ($quantity) {
 
-        session()->put('cart', $this->cart);
-    }
+                if ($cartItem['id'] == key($quantity)) {
+                    ++$cartItem['quantity'];
+                }
 
-    public function updateQuantity($quantity)
-    {
-        $this->cart = $this->cart->map(function ($cartItem, $key) use ($quantity) {
-            $cartItem['quantity'] = $quantity[$key];
-            return $cartItem;
-        });
-        session()->put('cart', $this->cart);
+                return $cartItem;
+            });
+            session()->put('cart', $this->cart);
+        } else {
+            $this->cart = $this->cart->map(function ($cartItem, $key) use ($quantity) {
+                $cartItem['quantity'] = $quantity[$key];
+                return $cartItem;
+            });
+
+            session()->put('cart', $this->cart);
+        }
     }
 
     public function total()
@@ -55,7 +56,7 @@ class CartService
 
     public function exist($id)
     {
-        return !$this->cart->where('id', $id)->isEmpty();
+        return $this->cart->where('id', $id)->isNotEmpty();
     }
 
     public function removeItem($id)
@@ -65,7 +66,7 @@ class CartService
         });
         session()->put('cart', $this->cart);
     }
-    
+
     public function destroy()
     {
         session()->forget('cart');
