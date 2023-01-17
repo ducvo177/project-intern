@@ -12,31 +12,19 @@ class CartService
 
     public function insert($course)
     {
-        $this->cart = $this->cart->push([
-            'id' => $course->id,
-            'name' => $course->name,
-            'price' => $course->price,
-            'image' => $course->attachment->file_name,
-            'quantity' => 1
-        ]);
+        $course->quantity = 1;
+        $course->image = $course->attachment->file_name;
+        $this->cart = $this->cart->push($course);
         session()->put('cart', $this->cart);
     }
 
-    public function update(array $quantity)
+    public function update(array $quantityList, $isReplace = true)
     {
-        if (count($quantity) == 1) {
-            $this->cart = $this->cart->map(function ($cartItem) use ($quantity) {
-
-                if ($cartItem['id'] == key($quantity)) {
-                    ++$cartItem['quantity'];
+        foreach ($quantityList as $key => $quantity) {
+            $this->cart = $this->cart->map(function ($cartItem) use ($quantity, $isReplace, $key) {
+                if ($cartItem['id'] == $key) {
+                    $isReplace ? $cartItem['quantity'] = $quantity : $cartItem['quantity'] += $quantity;
                 }
-
-                return $cartItem;
-            });
-            session()->put('cart', $this->cart);
-        } else {
-            $this->cart = $this->cart->map(function ($cartItem, $key) use ($quantity) {
-                $cartItem['quantity'] = $quantity[$key];
                 return $cartItem;
             });
 

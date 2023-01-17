@@ -37,9 +37,8 @@ class CartController extends Controller
             abort(404);
         }
 
-
         if ($cartService->exist($course->id)) {
-            $cartService->update([$course->id => 1]);
+            $cartService->update([$course->id => 1], false);
             return redirect()->back()->with('notification', 'Product added to cart successfully!');
         }
 
