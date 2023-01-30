@@ -3,9 +3,13 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\CheckoutCart as MailCheckoutCart;
 use App\Models\Course;
+use App\Notifications\CheckoutCart;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
+use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
@@ -67,5 +71,10 @@ class CartController extends Controller
     {
         app(CartService::class)->destroy();
         return redirect()->route('cart')->with('notification', 'Delete all cart successfully!!');
+    }
+    public function checkoutCart()
+    {
+        Mail::to(request()->user())->send(new MailCheckoutCart(app(CartService::class)->getAll(),request()->total));
+        return redirect()->route('cart')->with('notification', 'Checkout cart successfully!!');
     }
 }

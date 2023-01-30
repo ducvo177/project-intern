@@ -38,3 +38,4 @@ Route::get('/add-to-cart/{id}', [App\Http\Controllers\Backend\CartController::cl
 Route::get('/delete-from-cart/{id}', [App\Http\Controllers\Backend\CartController::class, 'deleteCourse'])->name('delete-from-cart');
 Route::get('/delete-all', [App\Http\Controllers\Backend\CartController::class, 'deleteAll'])->name('delete-all');
 Route::post('/update-cart', [App\Http\Controllers\Backend\CartController::class, 'updateCart'])->name('update-cart');
+Route::post('/checkout-cart', [App\Http\Controllers\Backend\CartController::class, 'checkoutCart'])->name('checkout-cart')->middleware('auth');
