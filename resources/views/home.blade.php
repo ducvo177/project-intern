@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="container">
+        @if (session()->has('notification'))
+            <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
+        @endif
+        <a href={{ route('cart') }} class="btn btn-success">Your Cart <i
+            class="fa-solid fa-cart-shopping"></i></a>
         <div class="row justify-content-center">
             <div class="d-flex ">
                 @foreach ($courses as $course)
@@ -14,11 +19,13 @@
                             <p class="card-text mb-0">Price: {{ $course->price }} $</p>
                             <p class="card-text mb-0">Old Price:<del class="text-danger"> {{ $course->old_price }}</del> $
                             </p>
-                            <p class="card-text mb-0">Views: {{ $course->view_count ?? '0' }} <i class="fa-solid fa-eye"></i>
+                            <p class="card-text mb-0">Views: {{ $course->view_count ?? '0' }} <i
+                                    class="fa-solid fa-eye"></i>
                             </p>
                             <p class="card-text mb-0 text-truncate">Description: {{ $course->description }}
                             </p>
-                            <a href="#" class="btn btn-danger">Add to cart <i
+
+                            <a href={{ route('add-to-cart',['id' => $course->id] ) }} class="btn btn-danger">Add to cart <i
                                     class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
