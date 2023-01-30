@@ -7,7 +7,7 @@
             class="img-fluid rounded-3 w-50 h-25" alt="Cotton T-shirt">
     </div>
     <div class="col-md-3 col-lg-3 col-xl-3">
-        <h5 class="text-black mb-0">{{ $cartItem['name'] }}</h5>
+        <a href="#" class="text-black mb-0">{{ $cartItem['name'] }}</a>
     </div>
     <h2>{{ $cartItem['quantity'] }}<h2>
 </div>
