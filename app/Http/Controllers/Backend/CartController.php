@@ -73,6 +73,7 @@ class CartController extends Controller
     public function checkoutCart()
     {
         Mail::to(request()->user())->send(new MailCheckoutCart(app(CartService::class)->getAll(), request()->total));
+        app(CartService::class)->destroy();
         return redirect()->route('cart')->with('notification', 'Checkout cart successfully!!');
     }
 }
