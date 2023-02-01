@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Casts\Attribute;
@@ -46,9 +48,7 @@ class Course extends Model
     protected function online(): Attribute
     {
         return Attribute::make(
-            get: function () {
-                return $this->is_online == static::IS_ONLINE['online'] ? "Online" : "Offline";
-            }
+            get: fn () => $this->is_online == static::IS_ONLINE['online'] ? "Online" : "Offline"
         );
     }
 

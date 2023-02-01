@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use App\Notifications\VerifyAccount;
@@ -55,9 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected function roleName(): Attribute
     {
         return Attribute::make(
-            get: function () {
-                return $this->type == static::TYPES['admin'] ? "Admin" : "Student";
-            }
+            get: fn () => $this->type == static::TYPES['admin'] ? "Admin" : "Student"
         );
     }
 
@@ -81,6 +81,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify((new VerifyAccount)->onQueue('default'));
+        $this->notify((new VerifyAccount())->onQueue('default'));
     }
 }
