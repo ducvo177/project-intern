@@ -3,19 +3,23 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+
 use App\Models\Course;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
+use App\Services\MailService;
 
 class CartController extends Controller
 {
     protected $courseRepository;
     protected $cartService;
+    protected $mailService;
 
-    public function __construct(CourseRepository $courseRepository, CartService $cartService)
+    public function __construct(CourseRepository $courseRepository, CartService $cartService, MailService $mailService)
     {
         $this->courseRepository = $courseRepository;
         $this->cartService = $cartService;
+        $this->mailService = $mailService;
     }
 
     public function index()
@@ -67,5 +71,11 @@ class CartController extends Controller
     {
         app(CartService::class)->destroy();
         return redirect()->route('cart')->with('notification', 'Delete all cart successfully!!');
+    }
+    public function checkoutCart()
+    {
+        $this->mailService->sendMailCheckoutOrder(request()->user(), app(CartService::class)->getAll(), request()->total);
+        app(CartService::class)->destroy();
+        return redirect()->route('cart')->with('notification', 'Checkout cart successfully!!');
     }
 }

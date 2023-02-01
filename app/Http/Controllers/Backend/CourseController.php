@@ -65,7 +65,7 @@ class CourseController extends Controller
 
     public function show($id)
     {
-        //
+        return view('admin.courses.show', ['course' => $this->courseRepository->findById($id, Course::class)]);
     }
 
     public function edit($id)
