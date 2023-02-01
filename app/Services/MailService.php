@@ -7,8 +7,8 @@ use App\Mail\CheckoutCart as MailCheckoutCart;
 
 class MailService
 {
-    public function sendMailCheckoutOrder($cart, $total)
+    public function sendMailCheckoutOrder($user, $cart, $total)
     {
-        Mail::to(request()->user())->send(new MailCheckoutCart($cart, $total));
+        Mail::to($user)->send(new MailCheckoutCart($cart, $total));
     }
 }
