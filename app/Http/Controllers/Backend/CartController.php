@@ -8,7 +8,6 @@ use App\Models\Course;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
 use App\Services\MailService;
-use Illuminate\Support\Facades\Mail;
 
 class CartController extends Controller
 {
