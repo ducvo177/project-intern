@@ -141,7 +141,7 @@
         @if (!empty($course))
             <img id="output" class="w-25 mt-2"
                 src={{ URL::asset('storage/attachments/' . $course->attachment->file_name) }}>
-            <input type='hidden' value="{{$course->attachment->file_path ?? null }}" name='old_photo'>
+            <input type='hidden' value="{{ $course->attachment->file_path ?? null }}" name='old_photo'>
         @else
             <img id="output" class="w-25 mt-2">
         @endif

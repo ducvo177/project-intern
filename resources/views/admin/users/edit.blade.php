@@ -21,7 +21,7 @@
                             <h4 class="card-title ">Update user</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('user.update', $user->id)}}" method="POST">
+                            <form action="{{ route('user.update', $user->id) }}" method="POST">
                                 @method('PUT')
                                 @include('admin.users._form')
                             </form>

@@ -5,9 +5,8 @@
         @if (session()->has('notification'))
             <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
         @endif
-        <a href={{ route('cart') }} class="btn btn-success">Your Cart <i
-            class="fa-solid fa-cart-shopping"></i></a>
-        <div class="row justify-content-center">
+        <a href={{ route('cart') }} class="btn btn-success">Your Cart <i class="fa-solid fa-cart-shopping"></i></a>
+        <div class="row justify-content-center mt-4">
             <div class="d-flex ">
                 @foreach ($courses as $course)
                     <div class="card mx-1" style="width: 18rem;">
@@ -25,7 +24,7 @@
                             <p class="card-text mb-0 text-truncate">Description: {{ $course->description }}
                             </p>
 
-                            <a href={{ route('add-to-cart',['id' => $course->id] ) }} class="btn btn-danger">Add to cart <i
+                            <a href={{ route('add-to-cart', ['id' => $course->id]) }} class="btn btn-danger">Add to cart <i
                                     class="fa-solid fa-cart-shopping"></i></a>
                         </div>
                     </div>
