@@ -7,7 +7,7 @@
                     class="img-fluid rounded-3 w-50 h-25" alt="Cotton T-shirt">
             </div>
             <div class="col-md-3 col-lg-3 col-xl-3">
-                <a href="{{ route('course.show',['course'=>$cartItem['id']])}}"
+                <a href="{{ route('course.show', ['course' => $cartItem['id']]) }}"
                     class="text-black mb-0">{{ $cartItem['name'] }}</a>
             </div>
             <h2>{{ $cartItem['quantity'] }}<h2>

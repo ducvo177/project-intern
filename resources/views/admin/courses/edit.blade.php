@@ -21,7 +21,8 @@
                             <h4 class="card-title ">Edit Couse</h4>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('course.update', $course->id)}}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('course.update', $course->id) }}" method="POST"
+                                enctype="multipart/form-data">
                                 @method('PUT')
                                 @include('admin.courses._form')
                             </form>
