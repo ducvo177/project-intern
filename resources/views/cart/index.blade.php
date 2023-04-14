@@ -7,9 +7,7 @@
             <div class="col-12">
                 <div class="card card-registration card-registration-2" style="border-radius: 15px;">
                     <div class="card-body p-0">
-                        <form class="row g-0"
-
-                            method="POST">
+                        <form class="row g-0" method="POST">
                             @csrf
                             <div class="col-lg-8">
                                 <div class="p-5">
@@ -86,13 +84,15 @@
 
                                     <div class="d-flex justify-content-between mb-5">
                                         <h5 class="text-uppercase">Total price</h5>
-                                        <input name='total' type="hidden" value="{{ $totalPrice }}"/>
+                                        <input name='total' type="hidden" value="{{ $totalPrice }}" />
                                         <h5>{{ $totalPrice }} $</h5>
                                     </div>
-                                    <input type="submit" name="update_button" formaction="{{ route('update-cart') }}" class="btn btn-success btn-block btn-lg"
-                                        data-mdb-ripple-color="green" value='Update'>
-                                    <input type="submit" name="checkout_button" formaction="{{ route('checkout-cart') }}" class="btn btn-dark btn-block btn-lg"
-                                        data-mdb-ripple-color="black" value='Checkout'>
+                                    <input type="submit" name="update_button" formaction="{{ route('update-cart') }}"
+                                        class="btn btn-success btn-block btn-lg" data-mdb-ripple-color="green"
+                                        value='Update'>
+                                    <input type="submit" name="checkout_button" formaction="{{ route('checkout-cart') }}"
+                                        class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="black"
+                                        value='Checkout'>
                                 </div>
                             </div>
                         </form>

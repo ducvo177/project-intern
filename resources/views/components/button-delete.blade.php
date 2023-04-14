@@ -1,4 +1,5 @@
-<form action={{ $route }} method="POST" onclick="return deleteUser({{$userId}}, {{$currentUserId}})" id="delete-item">
+<form action={{ $route }} method="POST" onclick="return deleteUser({{ $userId }}, {{ $currentUserId }})"
+    id="delete-item">
     @method('delete')
     @csrf
     <button class="btn btn-sm bg-danger-light" type="submit">
