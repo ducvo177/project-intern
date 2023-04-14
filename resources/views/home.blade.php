@@ -6,7 +6,7 @@
             <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
         @endif
         <a href={{ route('cart') }} class="btn btn-success">Your Cart <i class="fa-solid fa-cart-shopping"></i></a>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             <div class="d-flex ">
                 @foreach ($courses as $course)
                     <div class="card mx-1" style="width: 18rem;">
