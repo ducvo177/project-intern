@@ -7,7 +7,7 @@
                     <div class="col">
                         <h3 class="page-title">User Detail</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Trang chủ</a></li>
                             <li class="breadcrumb-item active">User Detail</li>
                         </ul>
                     </div>

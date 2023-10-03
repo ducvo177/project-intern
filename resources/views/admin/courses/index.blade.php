@@ -13,8 +13,8 @@
                     <div class="col">
                         <h3 class="page-title">Tài khoản quản trị</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Danh sách</li>
+                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a>></li>
+                            <li class="breadcrumb-item active">Danh sách khóa học</li>
                         </ul>
                     </div>
                 </div>
@@ -23,7 +23,7 @@
                 <div class="col-md-12 d-flex ">
                     <div class="card card-table flex-fill">
                         <div class="card-header">
-                            <h4 class="card-title float-start mr-auto">Danh sách Courses</h4>
+                            <h4 class="card-title float-start mr-auto">Danh sách khóa học</h4>
                             <x-search-form>
                                 <x-slot:slot>
                                     <select name="category" id="category" class="form-select">
@@ -94,12 +94,13 @@
                                                 <td>
                                                     <div class="actions d-flex">
                                                         <a href="{{ route('course.edit', ['course' => $course->id]) }}"
-                                                            class="btn btn-sm bg-success-light me-2">
+                                                            class="btn btn-sm bg-success-light me-2 edit-btn">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
-                                                        <button class="btn btn-sm bg-danger-light" type="submit">
-                                                            <i class="fa-solid fa-trash"></i>
-                                                        </button>
+                                                        <x-button-delete
+                                                            route="{{ route('course.destroy', ['course' => $course->id]) }}"
+                                                            deleteId="{{ $course->id }}"
+                                                            isUser="false" />
                                                     </div>
                                                 </td>
                                             </tr>

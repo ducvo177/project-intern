@@ -9,14 +9,14 @@ use Illuminate\View\Component;
 class ButtonDelete extends Component
 {
     public $route;
-    public $userId;
-    public $currentUserId;
+    public $deleteId;
+    public $isUser;
 
-    public function __construct($route, $userId, $currentUserId)
+    public function __construct($route, $deleteId, $isUser)
     {
         $this->route = $route;
-        $this->userId = $userId;
-        $this->currentUserId = $currentUserId;
+        $this->deleteId = $deleteId;
+        $this->isUser = $isUser;
     }
 
     public function render()

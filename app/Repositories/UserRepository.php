@@ -18,7 +18,7 @@ class UserRepository extends BaseRepository
 
     public function getAll(array $input = [])
     {
-        $query = $this->model->query();
+        $query = $this->model->query()->where('is_delete',0);
         $keyword = $input['key'] ?? '';
 
         if ($keyword) {
@@ -44,4 +44,5 @@ class UserRepository extends BaseRepository
 
         return $query->paginate(static::PER_PAGE);
     }
+
 }

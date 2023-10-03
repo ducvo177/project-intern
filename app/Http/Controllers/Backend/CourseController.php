@@ -62,7 +62,7 @@ class CourseController extends Controller
                 $this->savePhoto($file, $course->id);
             }
         });
-        return redirect()->route('course.index')->with('notification', 'Created courses successfully!');
+        return redirect()->route('course.index')->with('notification', 'Tạo khóa học thành công!!');
     }
 
     public function show($id)
@@ -88,11 +88,13 @@ class CourseController extends Controller
                 $this->savePhoto($file, $id);
             }
         });
-        return redirect()->route('course.index')->with('notification', 'Update course successfully!!');
+        return redirect()->route('course.index')->with('notification', 'Sửa khóa học thành công!!');
     }
 
     public function destroy($id)
     {
-        //
+        $inputs['is_delete']= 1;
+        $this->courseRepository->save($inputs,['id'=> $id]);
+        return redirect()->route('course.index')->with('notification', 'Xóa khóa học thành công!!');
     }
 }

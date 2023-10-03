@@ -21,7 +21,7 @@ class CourseRepository extends BaseRepository
 
     public function getAll(array $input = [])
     {
-        $query = $this->model->query();
+        $query = $this->model->query()->where('is_delete',0);
 
         if (!empty($input['key'])) {
             $query->where(

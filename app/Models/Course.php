@@ -38,6 +38,7 @@ class Course extends Model
         'meta_title',
         'meta_desc',
         'meta_keyword',
+        'is_delete',
     ];
 
     public const IS_ONLINE = [

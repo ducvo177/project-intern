@@ -70,10 +70,11 @@ class UserController extends Controller
     public function destroy($id)
     {
         if (Auth::user()->id == $id) {
-            return redirect()->route('user.index')->with('error', 'You can not delete your self!!');
+            return redirect()->route('user.index')->with('error', 'Bạn không thể xóa tài khoản của chính mình!');
         }
 
-        User::destroy($id);
+        $inputs['is_delete']= 1;
+        $this->userRepository->save($inputs,['id'=> $id]);
         return redirect()->route('user.index')->with('notification', 'Delete user successfully!!');
     }
 }

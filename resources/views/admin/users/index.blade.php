@@ -13,8 +13,8 @@
                     <div class="col">
                         <h3 class="page-title">Tài khoản quản trị</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Danh sách</li>
+                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a>></li>
+                            <li class="breadcrumb-item active">Danh sách User</li>
                         </ul>
                     </div>
                 </div>
@@ -93,8 +93,8 @@
 
                                                         <x-button-delete
                                                             route="{{ route('user.destroy', ['user' => $user->id]) }}"
-                                                            userId="{{ $user->id }}"
-                                                            currentUserId="{{ Auth::user()->id }}" />
+                                                            deleteId="{{ $user->id }}"
+                                                            isUser="true" />
                                                     </div>
                                                 </td>
                                             </tr>
