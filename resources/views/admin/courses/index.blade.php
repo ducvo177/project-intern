@@ -13,7 +13,7 @@
                     <div class="col">
                         <h3 class="page-title">Tài khoản quản trị</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a>></li>
+                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Danh sách khóa học</li>
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-                            <a href="{{ route('course.create') }}"><button class="btn btn-primary">Create new courses <i
+                            <a href="{{ route('course.create') }}"><button class="btn btn-primary add">Create new courses <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">

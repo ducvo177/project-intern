@@ -55,6 +55,7 @@ class CourseController extends Controller
     public function store(StoreCourseRequest $request)
     {
         $inputs = $request->all();
+        $inputs['view_count'] = 0;
         DB::transaction(function () use ($inputs, $request) {
             $course = $this->courseRepository->save($inputs);
             if ($request->has('photo')) {

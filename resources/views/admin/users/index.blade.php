@@ -13,7 +13,7 @@
                     <div class="col">
                         <h3 class="page-title">Tài khoản quản trị</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a>></li>
+                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
                             <li class="breadcrumb-item active">Danh sách User</li>
                         </ul>
                     </div>
@@ -33,7 +33,7 @@
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-                            <a href="{{ route('user.create') }}"><button class="btn btn-primary">Create new user <i
+                            <a href="{{ route('user.create') }}"><button class="btn btn-primary add">Create new user <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">
@@ -87,7 +87,7 @@
                                                 <td>
                                                     <div class="actions d-flex">
                                                         <a href="{{ route('user.edit', ['user' => $user->id]) }}"
-                                                            class="btn btn-sm bg-success-light me-2">
+                                                            class="btn btn-sm bg-success-light me-2 edit-btn">
                                                             <i class="fa-solid fa-pen-to-square"></i>
                                                         </a>
 
