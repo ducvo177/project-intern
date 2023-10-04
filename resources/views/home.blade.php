@@ -1,13 +1,32 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="container">
+    <div class="container user">
 
         @if (session()->has('notification'))
             <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
         @endif
-        <a href={{ route('cart') }} class="btn btn-success">Your Cart <i class="fa-solid fa-cart-shopping"></i></a>
+        <div class="container-slider-div">
+        <div class="container-slider-overlay">
+            <h1 class="slider_title">120 Days <br/>
+            Change your career
+        </h1>
+        <span class="slider_description">
+Đào tạo thế hệ lập trình viên kiến tạo thế giới số 1 </br>
+bắt đầu từ con số 0
+        </span>
+
+        </div>
+        <div class="container-slider">
+            <img src="{{ asset('/assets/img/slider-1.jpg')}}" class='container-slider-item'>
+            <img src="{{ asset('/assets/img/slider-2')}}" class='container-slider-item'>
+            <img src="{{ asset('/assets/img/slider-3.webp')}}" class='container-slider-item'>
+        </div>
+        </div>
+
+
         <div class="row justify-content-center mt-4">
+            <h2 class="course_title">Các khóa học của chúng tôi</h2>
             <div class="d-flex ">
                 @foreach ($courses as $course)
                     <div class="card mx-3" style="width: 18rem;">
@@ -33,6 +52,7 @@
             </div>
             <div class="mt-5">
                 {{ $courses->appends(request()->all())->links() }}</div>
+                <a href={{ route('cart') }} class="btn btn-outline-success btn-cart">Giỏ hàng của bạn <i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </div>
 @endsection
