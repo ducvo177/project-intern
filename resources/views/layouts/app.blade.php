@@ -14,6 +14,16 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/font-awesome.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/feathericon.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/plugins/morris/morris.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])

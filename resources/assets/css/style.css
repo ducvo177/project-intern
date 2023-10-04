@@ -4338,10 +4338,30 @@ th.sortable:hover::after {
     --bs-btn-border-color:#680a83 !important;
     --bs-btn-hover-bg: #7a418a !important;
     --bs-btn-hover-border-color:#7a418a !important;
+    background-color: #680a83 !important;
 }
+
 .btn-primary.add{
     margin-left: 40px !important;
 }
 .fa-solid.fa-sort{
     color: #680a83;
+}
+
+.card-img-top {
+    height: 200px !important;
+    object-fit: contain;
+}
+.card-title {
+    font-size: 15px;
+    font-weight: 700;
+}
+.card-description {
+    height: 120px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.card-text_price{
+    font-size: 16px;
+    font-weight: 700;
 }

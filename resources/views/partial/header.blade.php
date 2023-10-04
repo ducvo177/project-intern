@@ -44,9 +44,17 @@
                         <p class="text-muted mb-0">Administrator</p>
                     </div>
                 </div>
-                <a class="dropdown-item" href="general.html">My Profile</a>
+                <a  class="dropdown-item" href="{{ route('user.show', ['user' => '4']) }}">
+                My Profile
+                                                    </a>
                 <a class="dropdown-item" href="{{ route('change_password') }}">Change Password</a>
-                <a class="dropdown-item" href="login.html">Logout</a>
+                <form action="/logout" method="POST">
+                    @csrf
+                    <button class="dropdown-item" type="submit">
+                    Logout
+                    </button>
+                </form>
+
             </div>
         </li>
 
