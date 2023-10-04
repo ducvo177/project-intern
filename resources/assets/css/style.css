@@ -4368,6 +4368,10 @@ th.sortable:hover::after {
 .btn-cart{
     position: fixed;
     width: 200px !important;
+    height: 100px;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
     bottom:50px;
     right: 30px;
 }
@@ -4415,9 +4419,35 @@ th.sortable:hover::after {
       color: #ffffff;
   }
   .course_title{
-      font-size: 20px;
-      font-weight: 700;
-      margin:10px 0;
-  }
-
-
+    font-size: 20px;
+    font-weight: 700;
+    margin:20px 0 40px 0;
+}
+.sidebar-menu > ul > li > a{
+    text-decoration: none;
+}
+.introduce{
+    padding:40px 0;
+    background-color: rgba(104, 10, 131,0.05);
+}
+.introduce_item{
+    padding:30px 0;
+    display: flex;
+}
+.introduce_img{
+    width: 550px;
+    margin-right: 50px;
+}
+.introduce_title{
+    font-size: 22px;
+    font-weight: 700;
+}
+.introduce_content{
+    margin-top:40px;
+}
+.introduce_description{
+    font-size: 18px;
+}
+.introduce_description_item{
+    line-height: 40px;
+}

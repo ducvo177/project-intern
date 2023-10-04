@@ -13,15 +13,14 @@
                         <li><a href="users.html">Cài đặt tài khoản</a></li>
                     </ul>
                 </li>
-                <li class="submenu">
-                    <a href="#"><i class="fe fe-gear"></i> <span> Cài đặt chung </span> <span
-                            class="menu-arrow"></span></a>
-                    <ul style="display: none;">
-                        <li><a href="general.html">Thông tin chung</a></li>
-                        <li><a href="admob.html"> </a></li>
-                        <li><a href="sinch-settings.html">Sinch Settings </a></li>
-                        <li><a href="firebase-settings.html">Firebase Settings </a></li>
-                    </ul>
+                <li >
+                    <a href="{{ route('home') }}"><i class="fe fe-facebook"></i> <span>Facebook</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('home') }}"><i class="fe fe-instagram"></i> <span>Instagram</span></a>
+                </li>
+                <li>
+                    <a href="{{ route('home') }}"><i class="fe fe-twitter"></i> <span>Twitter</span></a>
                 </li>
             </ul>
         </div>
