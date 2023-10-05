@@ -27,7 +27,7 @@
 
     <ul class="nav user-menu">
 
-
+    <a href={{ route('cart') }} class="btn btn-outline-success btn-cart">Giỏ hàng của bạn <i class="fa-solid fa-cart-shopping"></i></a>
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                 <span class="user-img"><img class="rounded-circle"
@@ -48,7 +48,7 @@
                 <a  class="dropdown-item" href="{{ route('user.show', ['user' => '4']) }}">
                 My Profile
                                                     </a>
-                <a class="dropdown-item" href="{{ route('change_password') }}">Change Password</a>
+                <a class="dropdown-item" href="{{ route('change_password') }}">Thay đổi mật khẩu</a>
                 <form action="/logout" method="POST">
                     @csrf
                     <button class="dropdown-item" type="submit">

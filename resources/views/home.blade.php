@@ -1,6 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
+
 <div class="container user">
 
     @if (session()->has('notification'))
@@ -29,6 +30,7 @@
         <h2 class="course_title">Các khóa học của chúng tôi</h2>
         <div class="d-flex ">
             @foreach ($courses as $course)
+            <a href="{{ route('course.show', ['course' => $course->id]) }}" class='course_link'>
             <div class="card mx-3" style="width: 18rem;">
                 <img class="card-img-top" src="{{ URL::asset('storage/attachments/' . $course->attachment->file_name) }}" alt="Card image cap">
                 <div class="card-body">
@@ -41,15 +43,16 @@
                     <p class="card-text card-description"><strong>Mô tả:</strong> {{ $course->description }}
                     </p>
 
-                    <a href={{ route('add-to-cart', ['id' => $course->id]) }} class="btn btn-primary">Add to cart <i class="fa-solid fa-cart-shopping"></i></a>
+                    <a href={{ route('add-to-cart', ['id' => $course->id]) }} class="btn btn-primary float-end mt-3">Đăng ký <i class="fa-solid fa-cart-shopping"></i></a>
                 </div>
             </div>
+            </a>
             @endforeach
         </div>
         <div class="mt-5">
             {{ $courses->appends(request()->all())->links() }}
         </div>
-        <a href={{ route('cart') }} class="btn btn-outline-success btn-cart">Giỏ hàng của bạn <i class="fa-solid fa-cart-shopping"></i></a>
+
 
         <div class="introduce">
             <div class="introduce_item">

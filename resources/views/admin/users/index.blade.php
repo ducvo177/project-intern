@@ -13,7 +13,7 @@
                     <div class="col">
                         <h3 class="page-title">Tài khoản quản trị</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="/admin">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Danh sách User</li>
                         </ul>
                     </div>
@@ -33,7 +33,7 @@
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-                            <a href="{{ route('user.create') }}"><button class="btn btn-primary add">Create new user <i
+                            <a href="{{ route('user.create') }}"><button class="btn btn-primary add">Tạo tài khoản mới<i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">
@@ -45,10 +45,10 @@
                                                 ID
                                                 <x-sort-link columnName="id" />
                                             </th>
-                                            <th>Name
+                                            <th>Tên
                                                 <x-sort-link columnName="name" />
                                             </th>
-                                            <th>Phone</th>
+                                            <th>Số điện thoại</th>
                                             <th> Email
                                                 <x-sort-link columnName="email" />
                                             </th>

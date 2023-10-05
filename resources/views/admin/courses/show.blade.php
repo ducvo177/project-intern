@@ -5,7 +5,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Course Details</h3>
+                        <h3 class="page-title">Chi tiết khóa học</h3>
                     </div>
                 </div>
             </div>

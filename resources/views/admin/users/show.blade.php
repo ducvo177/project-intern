@@ -5,10 +5,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">User Detail</h3>
+                        <h3 class="page-title">Chi tiết tài khoản</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Trang chủ</a></li>
-                            <li class="breadcrumb-item active">User Detail</li>
+                            <li class="breadcrumb-item active">Chi tiết tài khoản</li>
                         </ul>
                     </div>
                 </div>
@@ -41,7 +41,7 @@
                                 <h5 class="float-end">{{ $user->phone }}</h5>
                             </div>
                             <div class="profile-list">
-                                <button type="button" class="btn btn-block btn-outline-light">View History</button></a>
+                                <button type="button" class="btn btn-block btn-outline-light">Xem lịch sử</button></a>
                             </div>
                         </div>
                     </div>
@@ -49,17 +49,17 @@
                 <div class="col-md-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title">User Courses</h4>
+                            <h4 class="card-title">Khóa học đã đăng ký</h4>
                         </div>
                         <div class="card-body">
                             <table class="table table-hover table-center mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Price</th>
-                                        <th>Old Price</th>
-                                        <th>Lessons</th>
-                                        <th>Category</th>
+                                        <th>Tên </th>
+                                        <th>Giá </th>
+                                        <th>Giá khuyến mãi</th>
+                                        <th>Bài học</th>
+                                        <th>Thể loại</th>
                                     </tr>
                                 </thead>
                                 <tbody>

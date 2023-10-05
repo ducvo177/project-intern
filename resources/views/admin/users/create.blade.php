@@ -5,7 +5,7 @@
             <div class="page-header">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h3 class="page-title">Add New User Form</h3>
+                        <h3 class="page-title">Thêm tài khoản mới</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>">
     Quản lý người dùng

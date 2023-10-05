@@ -1,5 +1,5 @@
 <x-mail::message>
-    <h1 class="title text-primary text-center">This is your checkout!!</h1>
+    <h1 class="title text-primary text-center">Thông báo đăng ký khóa học</h1>
     @foreach ($cart as $cartItem)
         <div class="row mb-4 d-flex justify-content-between">
             <div class="col-md-2 col-lg-2 col-xl-2">
@@ -15,5 +15,5 @@
         <hr class="my-4">
     @endforeach
     <h2>Total Price: {{ $total }}$</h2>
-    <h3 class="text-center">Thanks for your shopping </h3>
+    <h3 class="text-center">Cảm ơn bạn đã đặt khóa học </h3>
 </x-mail::message>

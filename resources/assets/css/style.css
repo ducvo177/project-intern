@@ -4357,8 +4357,7 @@ th.sortable:hover::after {
     font-weight: 700;
 }
 .card-description {
-    height: 120px;
-    overflow: hidden;
+    height: 100px;
     margin-bottom: 20px;
 }
 .card-text_price{
@@ -4366,14 +4365,11 @@ th.sortable:hover::after {
     font-weight: 700;
 }
 .btn-cart{
-    position: fixed;
-    width: 200px !important;
-    height: 100px;
+    height: 90%;
+    margin:5% 0;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
-    bottom:50px;
-    right: 30px;
 }
 .container.user{
     margin-top:60px !important;
@@ -4458,4 +4454,14 @@ padding:30px 15px;
 .sidebar-menu .menu-arrow{
   margin-top: 22px;
 }
-
+.course_link{
+    text-decoration: none !important;
+    color:#000 !important;
+}
+.card-description{
+    display: -webkit-box;
+     text-overflow: ellipsis;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

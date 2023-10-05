@@ -44,6 +44,6 @@ class CourseRepository extends BaseRepository
         }
 
         $query->withCount(['lessons','sections','users'])->with('category');
-        return $query->paginate(static::PER_PAGE);
+        return $query->paginate(4);
     }
 }
