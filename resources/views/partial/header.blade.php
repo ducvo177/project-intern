@@ -1,10 +1,11 @@
 <div class="header">
 
     <div class="header-left">
-        <a href="index.html" class="logo">
-            <img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo">
+    <a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>" class="logo">
+    <img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo">
         </a>
-        <a href="index.html" class="logo logo-small">
+
+        <a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>" class="logo logo-small">
             <img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo" width="30" height="30">
         </a>
     </div>

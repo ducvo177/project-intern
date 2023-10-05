@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth()->user()->type === 1 ? 'layouts.admin' : 'layouts.user')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">

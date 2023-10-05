@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.user')
 
 @section('content')
 
@@ -16,11 +16,8 @@
                                             {{ session()->get('notification') }}</div>
                                     @endif
                                     <div class="d-flex justify-content-between align-items-center mb-5">
-                                        <h1 class="fw-bold mb-0 text-black">Courses Cart</h1>
-                                        <div class="pt-5">
-                                            <a href="{{ route('delete-all') }}" class="text-body"> <button type="button"
-                                                    class="btn btn-danger">Delete All</button></a>
-                                        </div>
+                                        <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
+
                                     </div>
 
                                     <hr class="my-4">
@@ -35,46 +32,41 @@
                                                     <h5 class="text-black mb-0">{{ $cartItem['name'] }}</h5>
                                                 </div>
                                                 <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
-                                                    <span class="btn btn-link px-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-                                                        <i class="fas fa-minus"></i>
-                                                    </span>
-                                                    <input min="0" name="quantity[{{ $cartItem['id'] }}]"
-                                                        value="{{ $cartItem['quantity'] }}" type="number"
-                                                        class="form-control form-control-sm" />
-                                                    <span class="btn btn-link px-2"
-                                                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-                                                        <i class="fas fa-plus"></i>
+                                                    <span class="btn px-2"
+                                                    >{{ $cartItem['quantity'] }}
                                                     </span>
                                                 </div>
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
-                                                    <h6 class="mb-0">{{ $cartItem['quantity'] * $cartItem['price'] }}</h6>
+                                                    <h6 class="mb-0">{{ $cartItem['quantity'] * $cartItem['price'] }} $</h6>
                                                 </div>
-                                                <div class="col-md-1 col-lg-1 col-xl-1 text-end">
+                                                <div class="col-md-1 col-lg-1 col-xl-1 btn btn-danger ">
                                                     <a href="{{ route('delete-from-cart', ['id' => $cartItem['id']]) }}"
-                                                        class="text-muted"><i class="fas fa-times"></i></a>
+                                                        class="text-light"><i class="fas fa-times"></i></a>
                                                 </div>
                                             </div>
                                             <hr class="my-4">
                                         @endforeach
                                     @else
-                                        <h2>Your cart is empty</h2>
+                                        <h2>Giỏ hàng của bạn đang trống</h2>
                                     @endif
-
+                                    <div class="pt-5 float-end">
+                                            <a href="{{ route('delete-all') }}" class="text-body"> <button type="button"
+                                                    class="btn btn-danger">Xóa tất cả</button></a>
+                                    </div>
                                     <div class="pt-5">
                                         <h6 class="mb-0"><a href="{{ route('home') }}" class="text-body">
-                                                <i class="fas fa-long-arrow-alt-left me-2"></i>Back to shop</a></h6>
+                                                <i class="fas fa-long-arrow-alt-left me-2"></i>Quay lại trang chủ</a></h6>
                                     </div>
 
                                 </div>
                             </div>
                             <div class="col-lg-4 bg-grey">
                                 <div class="p-5">
-                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Summary</h3>
+                                    <h3 class="fw-bold mb-5 mt-2 pt-1">Hóa đơn</h3>
                                     <hr class="my-4">
 
                                     <div class="d-flex justify-content-between mb-4">
-                                        <h5 class="text-uppercase">Items:</h5>
+                                        <h5 class="text-uppercase">Số khóa học:</h5>
                                         @if (!empty(session()->get('cart')))
                                             <h5> {{ $total }} </h5>
                                         @endif
@@ -83,16 +75,16 @@
                                     <hr class="my-4">
 
                                     <div class="d-flex justify-content-between mb-5">
-                                        <h5 class="text-uppercase">Total price</h5>
+                                        <h5 class="text-uppercase">Tổng tiền:</h5>
                                         <input name='total' type="hidden" value="{{ $totalPrice }}" />
                                         <h5>{{ $totalPrice }} $</h5>
                                     </div>
                                     <input type="submit" name="update_button" formaction="{{ route('update-cart') }}"
-                                        class="btn btn-success btn-block btn-lg" data-mdb-ripple-color="green"
-                                        value='Update'>
+                                        class="btn btn-outline-dark btn-block btn-lg mb-4" data-mdb-ripple-color="green"
+                                        value='Cập nhật'>
                                     <input type="submit" name="checkout_button" formaction="{{ route('checkout-cart') }}"
-                                        class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="black"
-                                        value='Checkout'>
+                                        class="btn btn-primary btn-block btn-lg" data-mdb-ripple-color="black"
+                                        value='Thanh toán'>
                                 </div>
                             </div>
                         </form>

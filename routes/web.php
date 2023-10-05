@@ -26,12 +26,11 @@ Route::get('/email/verify/{id}/{hash}', [VerifycationController::class, 'verify'
 Auth::routes(['verify' => true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/change-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showForm'])->name('change_password');
+Route::post('/update-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'updatePassword'])->name('update_password');
+Route::resource('user', App\Http\Controllers\Backend\UserController::class);
 Route::prefix('admin')->middleware(['auth', 'is.admin'])->group(function () {
-    Route::resource('user', App\Http\Controllers\Backend\UserController::class);
     Route::resource('course', App\Http\Controllers\Backend\CourseController::class);
-    Route::get('/change-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showForm'])->name('change_password');
-    Route::post('/update-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'updatePassword'])->name('update_password');
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 })->name('admin');
 

@@ -4388,66 +4388,74 @@ th.sortable:hover::after {
       height: 600px !important;
       object-fit: cover;
   }
+
   .container-slider-overlay{
-      width: 1296px;
-      height: 600px ;
-      background-color: rgba(0, 0, 0, 0.5);
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 99;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-  }
-  .container-slider-div{
-   position: relative;
-  }
-  .slider_title{
-      font-size: 50px;
-      font-weight: 700;
-      font-family: 'Noto Sans JP', sans-serif;
-      text-transform: uppercase;
-      color: #ffffff;
-  }
-  .slider_description{
-      font-size: 20px;
-      font-weight: 700;
-      margin-top:20px;
-      color: #ffffff;
-  }
-  .course_title{
+    width: 1296px;
+    height: 600px ;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.container-slider-div{
+ position: relative;
+}
+.slider_title{
+    font-size: 50px;
+    font-weight: 700;
+    font-family: 'Noto Sans JP', sans-serif;
+    text-transform: uppercase;
+    color: #ffffff;
+}
+.slider_description{
     font-size: 20px;
     font-weight: 700;
-    margin:20px 0 40px 0;
+    margin-top:20px;
+    color: #ffffff;
+}
+.course_title{
+  font-size: 20px;
+  font-weight: 700;
+  margin:20px 0 40px 0;
 }
 .sidebar-menu > ul > li > a{
-    text-decoration: none;
+  text-decoration: none;
 }
 .introduce{
-    padding:40px 0;
-    background-color: rgba(104, 10, 131,0.05);
+  padding:40px 0;
+  background-color: rgba(104, 10, 131,0.05);
 }
 .introduce_item{
-    padding:30px 0;
-    display: flex;
+  padding:30px 0;
+  display: flex;
 }
 .introduce_img{
-    width: 550px;
-    margin-right: 50px;
+  width: 550px;
+  margin-right: 50px;
 }
 .introduce_title{
-    font-size: 22px;
-    font-weight: 700;
+  font-size: 22px;
+  font-weight: 700;
 }
 .introduce_content{
-    margin-top:40px;
+  margin-top:40px;
 }
 .introduce_description{
-    font-size: 18px;
+  font-size: 18px;
 }
 .introduce_description_item{
-    line-height: 40px;
+  line-height: 40px;
 }
+.sidebar-menu > ul > li > a{
+padding:30px 15px;
+}
+.sidebar-menu .menu-arrow{
+  margin-top: 22px;
+}
+

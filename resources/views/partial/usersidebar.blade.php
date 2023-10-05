@@ -10,7 +10,10 @@
                     <a href="#"><i class="fe fe-users"></i> <span> Tài khoản </span> <span
                             class="menu-arrow"></span></a>
                     <ul style="display: none;">
-                        <li><a href="users.html">Cài đặt tài khoản</a></li>
+                        <li>   <a href="{{ route('user.edit', ['user' => Auth()->user()->id]) }}"
+                                                          >
+                                                         Cài đặt tài khoản
+                                                        </a></li>
                     </ul>
                 </li>
                 <li >

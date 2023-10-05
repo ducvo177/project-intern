@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends(Auth()->user()->type === 1 ? 'layouts.admin' : 'layouts.user')
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
@@ -7,8 +7,10 @@
                     <div class="col-sm-12">
                         <h3 class="page-title">Change Password</h3>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.html">Account Management</a></li>
-                            <li class="breadcrumb-item active">Change Password Form</li>
+                            <li class="breadcrumb-item"><a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>">
+    Sửa tài khoản
+</a></li>
+                            <li class="breadcrumb-item active">Thay đổi mật khẩu</li>
                         </ul>
                     </div>
                 </div>
@@ -18,7 +20,7 @@
                 <div class="col-md-6 ">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title ">Add new user</h4>
+                            <h4 class="card-title ">Thêm người dùng mới</h4>
                         </div>
                         <div class="card-body">
                             <form action="{{ route('update_password') }}" method="POST">
