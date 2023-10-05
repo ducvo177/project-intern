@@ -31,21 +31,21 @@
         <div class="d-flex ">
             @foreach ($courses as $course)
             <a href="{{ route('course.show', ['course' => $course->id]) }}" class='course_link'>
-            <div class="card mx-3" style="width: 18rem;">
-                <img class="card-img-top" src="{{ URL::asset('storage/attachments/' . $course->attachment->file_name) }}" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title text-uppercase text-truncate">{{ $course->name }}</h5>
-                    <p class="card-text card-text_price mb-0"><strong>Giá khuyến mãi:</strong> <span class="text-danger"> {{ $course->price }} $</span></p>
-                    <p class="card-text card-text_price mb-0"><strong>Giá cũ:</strong><del class="text-secondary"> {{ $course->old_price }} $</del>
-                    </p>
-                    <p class="card-text mb-0"><strong>Lượt xem:</strong> {{ $course->view_count ?? '0' }} <i class="fa-solid fa-eye"></i>
-                    </p>
-                    <p class="card-text card-description"><strong>Mô tả:</strong> {{ $course->description }}
-                    </p>
+                <div class="card mx-3" style="width: 18rem;">
+                    <img class="card-img-top" src="{{ URL::asset('storage/attachments/' . $course->attachment->file_name) }}" alt="Card image cap">
+                    <div class="card-body">
+                        <h5 class="card-title text-uppercase text-truncate">{{ $course->name }}</h5>
+                        <p class="card-text card-text_price mb-0"><strong>Giá khuyến mãi:</strong> <span class="text-danger"> {{ $course->price }} $</span></p>
+                        <p class="card-text card-text_price mb-0"><strong>Giá cũ:</strong><del class="text-secondary"> {{ $course->old_price }} $</del>
+                        </p>
+                        <p class="card-text mb-0"><strong>Lượt xem:</strong> {{ $course->view_count ?? '0' }} <i class="fa-solid fa-eye"></i>
+                        </p>
+                        <p class="card-text card-description"><strong>Mô tả:</strong> {{ $course->description }}
+                        </p>
 
-                    <a href={{ route('add-to-cart', ['id' => $course->id]) }} class="btn btn-primary float-end mt-3">Đăng ký <i class="fa-solid fa-cart-shopping"></i></a>
+                        <a href={{ route('add-to-cart', ['id' => $course->id]) }} class="btn btn-primary float-end mt-3">Đăng ký <i class="fa-solid fa-cart-shopping"></i></a>
+                    </div>
                 </div>
-            </div>
             </a>
             @endforeach
         </div>
@@ -54,7 +54,7 @@
         </div>
 
 
-        <div class="introduce">
+        <section class="introduce">
             <div class="introduce_item">
                 <img src="{{ asset('/assets/img/introduce1.png')}}" alt="" class="introduce_img">
                 <div class="introduce_content">
@@ -77,7 +77,7 @@
                     <h2 class="introduce_title">LEARNING BY DOING
                     </h2>
                     <p class="introduce_description">
-                    Phương pháp đào tạo thực chiến, thực hành trên các dự án doanh nghiệp giúp thay đổi nhanh nhất nhận thức và kỹ năng của học viên
+                        Phương pháp đào tạo thực chiến, thực hành trên các dự án doanh nghiệp giúp thay đổi nhanh nhất nhận thức và kỹ năng của học viên
                     <ul class="introduce_description_list">
                         <li class="introduce_description_item">Học viên học qua dự án và các vấn đề thực tế</li>
                         <li class="introduce_description_item">Được đánh giá như đang làm việc tại công ty bởi các bạn học như đồng nghiệp và bởi thầy như quản lý</li>
@@ -87,7 +87,179 @@
                     </p>
                 </div>
             </div>
-        </div>
+        </section>
+        <section class="review">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-10 col-xl-8 text-center">
+                    <h2 class="mb-4 pt-5 font-weight-bold">Đánh giá về các khóa học của trung tâm</h2>
+                    <p class="mb-4 pb-2 mb-md-5 pb-md-0">
+                        Dưới đây là một số đánh giá qua quá trình trực tiếp trải nghiệm khóa học của các học viên. Các học viên đều được đào tạo một cách bài bản và chuyên nghiệp bất kể xuất phát điểm của họ là ở đâu.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row text-center">
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">Đào Phương Hồng</h5>
+                    <h6 class="text-primary mb-3">Web Developer</h6>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>
+                        Trung tâm đào tạo code này thực sự ấn tượng! Họ cung cấp các khóa học chất lượng về lập trình với đội ngũ giảng viên chuyên nghiệp. Học viên được hỗ trợ tận tâm và có cơ hội thực hành dự án thực tế. Tôi đã học nhiều và phát triển sự tự tin trong lập trình ở đây.
+                    </p>
+                    <ul class="list-unstyled d-flex justify-content-center mb-0">
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star-half-alt fa-sm text-warning"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-5 mb-md-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">Nguyễn Thị Lan</h5>
+                    <h6 class="text-primary mb-3">UI/UX designer</h6>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>Một nơi tuyệt vời để bắt đầu hành trình lập trình! Trung tâm đào tạo code này cung cấp môi trường học tập thân thiện, các tài liệu học tập chất lượng và sự hỗ trợ từ đội ngũ giảng viên dày dặn kinh nghiệm.
+                    </p>
+                    <ul class="list-unstyled d-flex justify-content-center mb-0">
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-0">
+                    <div class="d-flex justify-content-center mb-4">
+                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                    </div>
+                    <h5 class="mb-3">Vũ Đình Sơn</h5>
+                    <h6 class="text-primary mb-3">Android Developer</h6>
+                    <p class="px-xl-3">
+                        <i class="fas fa-quote-left pe-2"></i>Tôi đã tham gia nhiều khóa học ở đây và thực sự thấy hài lòng. Trung tâm đào tạo code này có chương trình học đa dạng, giúp tôi phát triển kỹ năng lập trình một cách hiệu quả. Không chỉ vậy, môi trường học tập và sự quan tâm từ đội ngũ giảng viên khiến tôi luôn muốn tiến xa hơn trong lập trình
+                    </p>
+                    <ul class="list-unstyled d-flex justify-content-center mb-0">
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="fas fa-star fa-sm text-warning"></i>
+                        </li>
+                        <li>
+                            <i class="far fa-star fa-sm text-warning"></i>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <footer class="text-center text-lg-start text-muted mt-5 p-0" style="background-color: rgba(104, 10, 131,0.05);">
+
+
+            <section class="border-top">
+                <div class="container text-center text-md-start mt-5">
+
+                    <div class="row mt-3">
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                            <h7 class="text-uppercase fw-bold mb-4">
+                                <a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>" class="logo">
+                                    <img src="{{ asset('assets/img/logo-small.png') }}" alt="Logo" class="logo_img mr-2">
+                                </a>
+                            </h7>
+                            <p class="text-left mt-2">
+                                "Nơi đào tạo ra những <br>lập trình viên hàng đầu"
+                            </p>
+                        </div>
+
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Ngôn ngữ
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Angular</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">React</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Vue</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">PHP Laravel</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">
+                                Hữu ích
+                            </h6>
+                            <p>
+                                <a href="#!" class="text-reset">Tất cả khóa học</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Cài đặt tài khoản</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Đơn hàng đã đặt</a>
+                            </p>
+                            <p>
+                                <a href="#!" class="text-reset">Hỗ trợ khách hàng</a>
+                            </p>
+                        </div>
+
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                            <h6 class="text-uppercase fw-bold mb-4">Liên lạc</h6>
+                            <p><i class="fas fa-home me-3 text-secondary"></i> Cầu Giấy, Hà Nội</p>
+                            <p>
+                                <i class="fas fa-envelope me-3 text-secondary"></i>
+                                info@example.com
+                            </p>
+                            <p><i class="fas fa-phone me-3 text-secondary"></i> 08888888888</p>
+                            <p><i class="fas fa-print me-3 text-secondary"></i> + 09999999999</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- Section: Links  -->
+
+            <!-- Copyright -->
+            <div class="text-center pt-4 pb-4" style="background-color: #6d1269; color:#fff">
+                © 2023 Copyright:
+                <a class="text-reset fw-bold" style="text-decoration: none;" href="https://www.facebook.com/ducklady177/">Duclangtu with love <span style=" color: red;">❤</span></a>
+            </div>
+            <!-- Copyright -->
+        </footer>
     </div>
 </div>
 @endsection

@@ -4465,3 +4465,6 @@ padding:30px 15px;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
+.logo_img{
+    width: 60px;
+}

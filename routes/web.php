@@ -25,7 +25,7 @@ Route::get('/email/verify/{id}/{hash}', [VerifycationController::class, 'verify'
 
 Auth::routes(['verify' => true]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('cors');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/change-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'showForm'])->name('change_password');
 Route::post('/update-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'updatePassword'])->name('update_password');
 Route::resource('user', App\Http\Controllers\Backend\UserController::class);
