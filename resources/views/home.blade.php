@@ -184,6 +184,11 @@
                 </div>
             </div>
         </section>
+        <section class='code_class'>
+        <div class="container mt-5">
+            <img src="{{ asset('/assets/img/class.jpg')}}" class="class_img"/>
+        </div>
+        </section>
         <section class="contact">
             <div class="container mt-5 col-md-6">
                 <h2>Liên hệ với chúng tôi</h2>
