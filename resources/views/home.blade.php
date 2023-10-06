@@ -3,7 +3,8 @@
 @section('content')
 
 <div class="container user">
-
+    <a id="button"></a>
+    <iframe width="261" height="134" src="https://w2.countingdownto.com/5030973" frameborder="0" class="countdown_iframe"></iframe>
     @if (session()->has('notification'))
     <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
     @endif
@@ -101,7 +102,7 @@
             <div class="row text-center">
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="d-flex justify-content-center mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(1).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                        <img src="{{ asset('/assets/img/profiles/avatar-02.jpg')}}" class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
                     <h5 class="mb-3">Đào Phương Hồng</h5>
                     <h6 class="text-primary mb-3">Web Developer</h6>
@@ -129,7 +130,7 @@
                 </div>
                 <div class="col-md-4 mb-5 mb-md-0">
                     <div class="d-flex justify-content-center mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(2).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                        <img src="{{ asset('/assets/img/profiles/avatar-03.jpg')}}" class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
                     <h5 class="mb-3">Nguyễn Thị Lan</h5>
                     <h6 class="text-primary mb-3">UI/UX designer</h6>
@@ -156,7 +157,7 @@
                 </div>
                 <div class="col-md-4 mb-0">
                     <div class="d-flex justify-content-center mb-4">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(9).webp" class="rounded-circle shadow-1-strong" width="150" height="150" />
+                        <img src="{{ asset('/assets/img/profiles/avatar-04.jpg')}}" class="rounded-circle shadow-1-strong" width="150" height="150" />
                     </div>
                     <h5 class="mb-3">Vũ Đình Sơn</h5>
                     <h6 class="text-primary mb-3">Android Developer</h6>
@@ -182,6 +183,32 @@
                     </ul>
                 </div>
             </div>
+        </section>
+        <section class="contact">
+            <div class="container mt-5 col-md-6">
+                <h2>Liên hệ với chúng tôi</h2>
+                <form action="{{route('contact')}}" method="post">
+                    @csrf
+                    <div class="form-group">
+                        <label for="name">Họ và tên:</label>
+                        <input type="text" class="form-control" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Số điện thoại:</label>
+                        <input type="tel" class="form-control" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="content">Câu hỏi hoặc phản hồi:</label>
+                        <textarea class="form-control" id="question" name="content" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Gửi</button>
+                </form>
+            </div>
+
         </section>
         <footer class="text-center text-lg-start text-muted mt-5 p-0" style="background-color: rgba(104, 10, 131,0.05);">
 
@@ -251,14 +278,12 @@
 
                 </div>
             </section>
-            <!-- Section: Links  -->
 
-            <!-- Copyright -->
             <div class="text-center pt-4 pb-4" style="background-color: #6d1269; color:#fff">
                 © 2023 Copyright:
                 <a class="text-reset fw-bold" style="text-decoration: none;" href="https://www.facebook.com/ducklady177/">Duclangtu with love <span style=" color: red;">❤</span></a>
             </div>
-            <!-- Copyright -->
+
         </footer>
     </div>
 </div>
