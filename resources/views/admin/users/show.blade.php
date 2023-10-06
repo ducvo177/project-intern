@@ -56,8 +56,8 @@
                                 <thead>
                                     <tr>
                                         <th>Tên </th>
+                                        <th>Giá khuyến mãi </th>
                                         <th>Giá </th>
-                                        <th>Giá khuyến mãi</th>
                                         <th>Bài học</th>
                                         <th>Thể loại</th>
                                     </tr>

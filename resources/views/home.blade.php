@@ -8,6 +8,9 @@
     @if (session()->has('notification'))
     <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
     @endif
+    @if(session()->has('error'))
+    <div class="alert alert-error alert-dismissible">{{ session()->get('error') }}</div>
+    @endif
     <div class="container-slider-div">
         <div class="container-slider-overlay">
             <h1 class="slider_title">120 Days <br />
