@@ -36,7 +36,7 @@
                                     </select>
                                 </x-slot:slot>
                             </x-search-form>
-                            <a href="{{ route('course.create') }}"><button class="btn btn-primary add">Create new courses <i
+                            <a href="{{ route('course.create') }}"><button class="btn btn-primary add">Tạo khóa học mới <i
                                         class="fa-solid fa-plus"></i></button></a>
                         </div>
                         <div class="card-body">
@@ -48,13 +48,13 @@
                                                 ID
                                                 <x-sort-link columnName="id" />
                                             </th>
-                                            <th>Name
+                                            <th>Tên
                                                 <x-sort-link columnName="name" />
                                             </th>
-                                            <th>Category</th>
-                                            <th>Online</th>
-                                            <th> Students</th>
-                                            <th>Lessons</th>
+                                            <th>Thể loại</th>
+                                            <th>Trạng thái</th>
+                                            <th>Học sinh</th>
+                                            <th>Bài học</th>
                                             <th>Sections</th>
                                             <th>Created At</th>
                                             <th>Updated At</th>
@@ -74,7 +74,7 @@
                                                     {{ $course->category->name ?? null }}
                                                 </td>
                                                 <td>
-                                                    {{ $course->online }}
+                                                    {{ $course->is_delete?'Không còn hoạt động':'Còn hoạt động' }}
                                                 </td>
                                                 <td>
                                                     {{ $course->users_count }}

@@ -24,4 +24,8 @@ class ContactController extends Controller
         ]);
         return redirect()->route('home')->with('notification', 'Cảm ơn bạn đã liên hệ!');
     }
+    public function index(){
+        $contacts = Contact::orderBy('created_at', 'desc')->get();
+        return view('admin.contact.index', ['contacts' => $contacts]);
+    }
 }

@@ -2,6 +2,12 @@
 @section('content')
     <div class="page-wrapper">
         <div class="content container-fluid">
+        @if (session()->has('notification'))
+                <div class="alert alert-success alert-dismissible">{{ session()->get('notification') }}</div>
+            @endif
+            @if (session()->has('error'))
+                <div class="alert alert-danger alert-dismissible">{{ session()->get('error') }}</div>
+            @endif
             <div class="row">
                 <div class="col-xl-3 col-sm-3 col-12">
                     <div class="card">
@@ -12,7 +18,7 @@
                                 </span>
                                 <div class="dash-count">
                                     <a href="#" class="count-title">Thành viên</a>
-                                    <a href="#" class="count"> 10,320</a>
+                                    <a href="#" class="count"> {{$statistic['user_count']}}</a>
                                 </div>
                             </div>
                         </div>
@@ -27,7 +33,7 @@
                                 </span>
                                 <div class="dash-count">
                                     <a href="#" class="count-title">Danh mục</a>
-                                    <a href="#" class="count"> 14,628</a>
+                                    <a href="#" class="count"> {{$statistic['category_count']}}</a>
                                 </div>
                             </div>
                         </div>
@@ -41,8 +47,8 @@
                                     <i class="fa fa-product-hunt" aria-hidden="true"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <a href="#" class="count-title">Sản phẩm</a>
-                                    <a href="#" class="count"> 2,980</a>
+                                    <a href="#" class="count-title">Khóa học</a>
+                                    <a href="#" class="count">{{$statistic['course_count']}}</a>
                                 </div>
                             </div>
                         </div>
@@ -57,7 +63,7 @@
                                 </span>
                                 <div class="dash-count">
                                     <a href="#" class="count-title">Đơn đặt hàng</a>
-                                    <a href="#" class="count"> 2,980</a>
+                                    <a href="#" class="count"> {{$statistic['course_user_count']}}</a>
                                 </div>
                             </div>
                         </div>
@@ -80,120 +86,38 @@
                                 <table class="table table-hover table-center">
                                     <thead>
                                         <tr>
-                                            <th>Mã đơn hàng</th>
+                                            <th class="text-center">Mã đơn hàng</th>
                                             <th>Ngày đặt hàng</th>
-                                            <th>Tên khách hàng</th>
+                                            <th class="text-center">Tên khách hàng</th>
+                                            <th>Tên khóa học</th>
                                             <th class="text-center">Số lượng sản phẩm</th>
-                                            <th class="text-center">Tổng tiền</th>
+                                            <th class="text-center">Trạng thái</th>
                                             <th class="text-end">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                    @foreach ($orders as $order)
                                         <tr>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">06456546</div>
+                                            <td class="text-center">
+                                                <div class="font-weight-600 ">{{$order->id}}</div>
                                             </td>
                                             <td class="text-nowrap">
-                                                <div class="font-weight-600">20-10-2021</div>
+                                                <div class="font-weight-600">{{$order->created_at->format('d/m/Y')}}</div>
                                             </td>
-                                            <td class="text-nowrap">Scott Albright</td>
-                                            <td class="text-center">20 Jan 2019</td>
-                                            <td class="text-center">15 mins ago</td>
+                                            <td class="text-center">{{$order->user_name}}</td>
+                                            <td class="text-nowrap ">{{$order->course_name}}</td>
+                                            <td class="text-center">1</td>
+                                            <td class="text-center">{{ $order->paid?'Đã thanh toán':'Chưa thanh toán'}}</td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fe fe-eye"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fe fe-close"></i>
-                                                    </a>
+                                                <x-button-delete
+                                                            route="{{ route('cart.destroy', ['cart' => $order->id]) }}"
+                                                            deleteId="{{ $order->id }}"
+                                                            isUser="false" />
                                                 </div>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">06456546</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">20-10-2021</div>
-                                            </td>
-                                            <td class="text-nowrap">Kevin Howard</td>
-                                            <td class="text-center">10 Mar 2019</td>
-                                            <td class="text-center">Just Now</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fe fe-eye"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fe fe-close"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">06456546</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">20-10-2021</div>
-                                            </td>
-                                            <td class="text-nowrap">Eric Knight</td>
-                                            <td class="text-center">24 Jun 2019</td>
-                                            <td class="text-center">1 hr ago</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fe fe-eye"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fe fe-close"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">06456546</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">20-10-2021</div>
-                                            </td>
-                                            <td class="text-nowrap">Irene Perkins</td>
-                                            <td class="text-center">09 Sep 2019</td>
-                                            <td class="text-center">3 mins ago</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fe fe-eye"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fe fe-close"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">06456546</div>
-                                            </td>
-                                            <td class="text-nowrap">
-                                                <div class="font-weight-600">20-10-2021</div>
-                                            </td>
-                                            <td class="text-nowrap">Carol Andre</td>
-                                            <td class="text-center">10 Oct 2020</td>
-                                            <td class="text-center">1 day ago</td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a href="#" class="btn btn-sm bg-success-light me-2">
-                                                        <i class="fe fe-eye"></i>
-                                                    </a>
-                                                    <a href="#" class="btn btn-sm bg-danger-light">
-                                                        <i class="fe fe-close"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -16,6 +16,7 @@ class CourseUser extends Model
         'id',
         'course_id',
         'user_id',
+        'is_delete'
     ];
 
 

@@ -17,13 +17,13 @@
                     </ul>
                 </li>
                 <li >
-                    <a href="{{ route('home') }}"><i class="fe fe-facebook"></i> <span>Facebook</span></a>
+                    <a href="https://www.facebook.com/"><i class="fe fe-facebook"></i> <span>Facebook</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"><i class="fe fe-instagram"></i> <span>Instagram</span></a>
+                    <a href="https://www.instagram.com/"><i class="fe fe-instagram"></i> <span>Instagram</span></a>
                 </li>
                 <li>
-                    <a href="{{ route('home') }}"><i class="fe fe-twitter"></i> <span>Twitter</span></a>
+                    <a href=""><i class="fe fe-twitter"></i> <span>Twitter</span></a>
                 </li>
             </ul>
         </div>

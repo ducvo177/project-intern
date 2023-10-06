@@ -94,4 +94,10 @@ class CartController extends Controller
         app(CartService::class)->destroy();
         return redirect()->route('cart')->with('notification', 'Thanh toán thành công!!');
     }
+    public function destroy($id)
+    {
+        $inputs['is_delete']= 1;
+        $this->cartRepository->save($inputs,['id'=> $id]);
+        return redirect()->route('dashboard')->with('notification', 'Xóa đơn hàng thành công!!');
+    }
 }

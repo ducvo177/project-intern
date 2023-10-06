@@ -8,8 +8,8 @@
                         <h3 class="page-title">Form sửa khóa học</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="<?php echo (Auth()->user()->type === 1) ? route('dashboard') : route('home'); ?>">
-    Quản lý khóa học
-</a></li>
+                                Quản lý khóa học
+                            </a></li>
                             <li class="breadcrumb-item active">Form sửa khóa học</li>
                         </ul>
                     </div>

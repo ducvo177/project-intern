@@ -26,8 +26,9 @@
 
 
     <ul class="nav user-menu">
-
+    @if(Auth()->user()->type !=1)
     <a href={{ route('cart') }} class="btn btn-outline-success btn-cart">Giỏ hàng của bạn <i class="fa-solid fa-cart-shopping"></i></a>
+    @endif
         <li class="nav-item dropdown has-arrow">
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                 <span class="user-img"><img class="rounded-circle"
