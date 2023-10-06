@@ -39,10 +39,12 @@
                                                 <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
                                                     <h6 class="mb-0">{{ $cartItem['quantity'] * $cartItem['price'] }} $</h6>
                                                 </div>
-                                                <div class="col-md-1 col-lg-1 col-xl-1 btn btn-danger ">
-                                                    <a href="{{ route('delete-from-cart', ['id' => $cartItem['id']]) }}"
-                                                        class="text-light"><i class="fas fa-times"></i></a>
+                                                <a href="{{ route('delete-from-cart', ['id' => $cartItem['id']]) }}"  class="text-light col-md-1 col-lg-1 col-xl-1">
+                                                <div class=" btn btn-danger ">
+                                                <i class="fas fa-times">
+                                                      </i>
                                                 </div>
+                                                </a>
                                             </div>
                                             <hr class="my-4">
                                         @endforeach
