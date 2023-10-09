@@ -33,7 +33,7 @@
             <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
                 <span class="user-img"><img class="rounded-circle"
                         src="{{ asset('assets/img/profiles/avatar-02.jpg') }}" width="31"
-                        alt="Seema Sisty"></span>
+                        alt="User image"></span>
             </a>
             <div class="dropdown-menu">
                 <div class="user-header">
@@ -42,8 +42,8 @@
                             class="avatar-img rounded-circle">
                     </div>
                     <div class="user-text">
-                        <h6>Seema Sisty</h6>
-                        <p class="text-muted mb-0">Administrator</p>
+                        <h6>{{Auth()->user()->name}}</h6>
+                        <p class="text-muted mb-0">{{Auth()->user()->role==1?'Administrator':'User'}}</p>
                     </div>
                 </div>
                 <a  class="dropdown-item" href="{{ route('user.show', ['user' => '4']) }}">
