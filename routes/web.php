@@ -43,3 +43,7 @@ Route::get('/delete-from-cart/{id}', [App\Http\Controllers\Backend\CartControlle
 Route::get('/delete-all', [App\Http\Controllers\Backend\CartController::class, 'deleteAll'])->name('delete-all');
 Route::post('/update-cart', [App\Http\Controllers\Backend\CartController::class, 'updateCart'])->name('update-cart');
 Route::post('/checkout-cart', [App\Http\Controllers\Backend\CartController::class, 'checkoutCart'])->name('checkout-cart')->middleware('auth');
+Route::view('paypal/payment', 'paypal.index')->name('create.payment');
+Route::get('paypal/handle-payment', [App\Http\Controllers\PaymentController::class, 'handlePayment'])->name('make.payment');
+Route::get('paypal/cancel-payment', [App\Http\Controllers\PaymentController::class, 'paymentCancel'])->name('cancel.payment');
+Route::get('paypal/payment-success', [App\Http\Controllers\PaymentController::class, 'paymentSuccess'])->name('success.payment');
