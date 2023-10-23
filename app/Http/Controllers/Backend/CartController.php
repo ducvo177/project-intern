@@ -46,8 +46,8 @@ class CartController extends Controller
         }
 
         if ($cartService->exist($course->id)) {
-            $cartService->update([$course->id => 1], false);
-            return redirect()->back()->with('notification', 'Khóa học được thêm vào giỏ hàng thành công!');
+
+            return redirect()->back()->with('error', 'Khóa học đã được thêm vào giỏ hàng rồi!');
         }
 
         $cartService->insert($course);
