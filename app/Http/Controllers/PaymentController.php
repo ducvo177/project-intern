@@ -27,7 +27,7 @@ class PaymentController extends Controller
                 ]
             ]
         ]);
-        dd($response);
+
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $links) {
                 if ($links['rel'] == 'approve') {

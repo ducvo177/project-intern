@@ -15,6 +15,7 @@
                                         <div class="alert alert-success alert-dismissible">
                                             {{ session()->get('notification') }}</div>
                                     @endif
+                                    <input type="hidden" name="total" value="{{ $totalPrice }}">
                                     <div class="d-flex justify-content-between align-items-center mb-5">
                                         <h1 class="fw-bold mb-0 text-black">Giỏ hàng</h1>
 

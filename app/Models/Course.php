@@ -31,7 +31,8 @@ class Course extends Model
         'price',
         'old_price',
         'category_id',
-        'benefits',
+        'bene
+        fits',
         'is_online',
         'description',
         'content',
