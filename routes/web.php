@@ -34,6 +34,8 @@ Route::prefix('admin')->middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/contact', [App\Http\Controllers\Backend\ContactController::class, 'index'])->name('admin.contact');
     Route::resource('cart', App\Http\Controllers\Backend\CartController::class);
+    Route::get('/statis-index',[App\Http\Controllers\Backend\StatisController::class,'index'])->name('admin.statis');
+    Route::post('/statis-detail',[App\Http\Controllers\Backend\StatisController::class,'detail'])->name('admin.statis-detail');
 })->name('admin');
 
 Route::post('/contact', [App\Http\Controllers\Backend\ContactController::class, 'store'])->name('contact');

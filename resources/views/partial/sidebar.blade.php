@@ -2,6 +2,9 @@
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
+                <li class="{{ request()->is('admin/statis*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.statis') }}"><i class="fe fe-home"></i> <span>Thống kê</span></a>
+                </li>
                 <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}"><i class="fe fe-home"></i> <span>Trang chủ</span></a>
                 </li>
