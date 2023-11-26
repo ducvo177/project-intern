@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 
 use App\Models\Course;
+use App\Repositories\BillRepository;
 use App\Repositories\CartRepository;
 use App\Repositories\CourseRepository;
 use App\Services\CartService;
@@ -20,12 +21,15 @@ class CartController extends Controller
     protected $cartService;
     protected $mailService;
 
-    public function __construct(CourseRepository $courseRepository,CartRepository $cartRepository, CartService $cartService, MailService $mailService)
+    protected $billRepository;
+
+    public function __construct(CourseRepository $courseRepository,CartRepository $cartRepository, CartService $cartService, MailService $mailService, BillRepository $billRepository)
     {
         $this->courseRepository = $courseRepository;
         $this->cartRepository = $cartRepository;
         $this->cartService = $cartService;
         $this->mailService = $mailService;
+        $this->billRepository = $billRepository;
     }
 
     public function index()
@@ -94,6 +98,9 @@ class CartController extends Controller
                 $this->cartRepository->save($inputs);
             }
         };
+
+        $this->billRepository->save(['user_id'=> Auth()->user()->id, 'price'=> $request->input('total')]);
+
         app(CartService::class)->destroy();
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));

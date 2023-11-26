@@ -15,14 +15,14 @@
                                 <div class="row mb-3 d-flex flex-col">
                                     <div class="col-md-4">
                                         <label for="type" class="card-title">Loại thống kê</label>
-                                        <select name="type" class="form-control">
+                                        <select name="type" class="form-control" required>
                                             <option value="user_activity">Thống kê hoạt động người dùng</option>
                                             <option value="revenue">Thống kê doanh thu</option>
                                         </select>
                                     </div>
                                     <div class="col-md-4">
                                         <label for="user_id" class="card-title">Chọn người dùng</label>
-                                        <select name="user_id" class="form-control">
+                                        <select name="user_id" class="form-control" required>
                                             @foreach($userList as $user)
                                                 <option value="{{ $user->id }}">{{ $user->name }}</option>
                                             @endforeach
@@ -31,11 +31,11 @@
                                     <div class="d-flex my-3 gap-5">
                                         <div class="col-md-4">
                                             <label for="begin_date" class="card-title">Ngày bắt đầu</label>
-                                            <input type="date" name="begin_date" class="form-control">
+                                            <input type="date" name="begin_date" class="form-control" required>
                                         </div>
                                         <div class="col-md-4">
                                             <label for="end_date" class="card-title">Ngày kết thúc</label>
-                                            <input type="date" name="end_date" class="form-control">
+                                            <input type="date" name="end_date" class="form-control" required>
                                         </div>
                                     </div>
                                 </div>
