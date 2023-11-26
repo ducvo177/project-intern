@@ -40,7 +40,6 @@ class CartRepository extends BaseRepository
             'users.name as user_name',
             'courses.name as course_name'
         )
-        ->where('course_user.is_delete', 0)
         ->get();
     }
 }

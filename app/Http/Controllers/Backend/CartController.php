@@ -85,23 +85,6 @@ class CartController extends Controller
     public function checkoutCart(HttpRequest $request)
     {
 
-        $this->mailService->sendMailCheckoutOrder(request()->user(), app(CartService::class)->getAll(), request()->total);
-        $oldOrder = $this->cartRepository->getCourseById( request()->user()->id);
-        foreach (app(CartService::class)->getAll() as $cartItem) {
-            $inputs['course_id'] =$cartItem->id;
-            $inputs['user_id'] = request()->user()->id;
-            $existingOrder = collect($oldOrder)->first(function ($order) use ($cartItem) {
-                return $order->course_id == $cartItem->id;
-            });
-
-            if (!$existingOrder) {
-                $this->cartRepository->save($inputs);
-            }
-        };
-
-        $this->billRepository->save(['user_id'=> Auth()->user()->id, 'price'=> $request->input('total')]);
-
-        app(CartService::class)->destroy();
         $provider = new PayPalClient;
         $provider->setApiCredentials(config('paypal'));
         $paypalToken = $provider->getAccessToken();
@@ -121,6 +104,25 @@ class CartController extends Controller
             ]
         ]);
 
+        $this->billRepository->save(['user_id'=> Auth()->user()->id, 'price'=> $request->input('total')]);
+
+        $this->mailService->sendMailCheckoutOrder(request()->user(), app(CartService::class)->getAll(), request()->total);
+        $oldOrder = $this->cartRepository->getCourseById( request()->user()->id);
+
+        foreach (app(CartService::class)->getAll() as $cartItem) {
+            $inputs['course_id'] =$cartItem->id;
+            $inputs['user_id'] = request()->user()->id;
+            $inputs['paid']=1;
+            $existingOrder = collect($oldOrder)->first(function ($order) use ($cartItem) {
+                return $order->course_id == $cartItem->id;
+            });
+
+            if (!$existingOrder) {
+                $this->cartRepository->save($inputs);
+            }
+        };
+
+        app(CartService::class)->destroy();
         if (isset($response['id']) && $response['id'] != null) {
             foreach ($response['links'] as $links) {
                 if ($links['rel'] == 'approve') {
