@@ -21,7 +21,7 @@ Route::get('/', function () {
     return redirect()->route('login');
 });
 
-Route::get('/email/verify/{id}/{hash}', [VerifycationController::class, 'verify'])->middleware(['signed', 'verified'])->name('verification.verify');
+Route::get('/email/verify/{id}/{hash}', [App\Http\Controllers\Auth\VerificationController::class, 'verify'])->middleware(['signed', 'verified'])->name('verification.verify');
 
 Auth::routes(['verify' => true]);
 

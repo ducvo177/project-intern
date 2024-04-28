@@ -17,7 +17,7 @@
                         <h3 class="text-center">
                             {{ __('Before proceeding, please check your email for a verification link.') }}</h3>
                         <br />
-                        <img class="img-responsive w-25 mx-auto d-block" src="{{ asset('/assets/img/email.webp') }}">
+                        <img class="img-responsive w-25 mx-auto d-block" src="https://static.vecteezy.com/system/resources/thumbnails/005/269/576/small/mail-icon-free-vector.jpg   ">
                         <h3 class="text-center">{{ __('If you did not receive the email') }}</h3>
                         <br />
                         <form class="w-100" method="POST" action="{{ route('verification.resend') }}">
