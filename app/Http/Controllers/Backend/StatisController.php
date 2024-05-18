@@ -26,8 +26,6 @@ class StatisController extends Controller
     public function detail(Request $request){
         if($request['type']= "revenue"){
             $statis = $this->statisRepository->getBillStatis($request['user_id'],$request['begin_date'],$request['end_date']);
-        }else{
-            $statis = $this->statisRepository->getActionStatis($request['user_id'],$request['begin_date'],$request['end_date']);
         }
 
         return view('admin.statistical.detail',['statis'=>$statis]);

@@ -5,6 +5,9 @@
                 <li class="{{ request()->is('admin/dashboard*') ? 'active' : '' }}">
                     <a href="{{ route('dashboard') }}"><i class="fe fe-home"></i> <span>Trang chủ</span></a>
                 </li>
+                <li class="{{ request()->is('admin/statis*') ? 'active' : '' }}">
+                    <a href="{{ route('admin.statis') }}"><i class="fe fe-home"></i> <span>Thống kê</span></a>
+                </li>
                 <li class="{{ request()->is('admin/contact*') ? 'active' : '' }}">
                     <a href="{{ route('admin.contact') }}"><i class="fe fe-mail"></i> <span>Mail của khách hàng</span></a>
                 </li>

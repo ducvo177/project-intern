@@ -21,22 +21,16 @@ class StatisRepository extends BaseRepository
     {
         $beginDate = date('Y-m-d H:i:s', strtotime($beginDate . ' 00:00:00'));
         $endDate = date('Y-m-d H:i:s', strtotime($endDate . ' 23:59:59'));
-            $bills = $this->Bmodel->where('user_id', $userId)
-                ->whereBetween('created_at', [$beginDate, $endDate])
-                ->get();
 
-            return $bills;
+        $query = $this->Bmodel->whereBetween('created_at', [$beginDate, $endDate]);
+
+        if ($userId !== 'all') {
+            $query->where('user_id', $userId);
+        }
+
+        $bills = $query->get();
+
+        return $bills;
     }
-    public function getActionStatis($userId, $beginDate, $endDate)
-    {
-        $beginDate = date('Y-m-d H:i:s', strtotime($beginDate . ' 00:00:00'));
-        $endDate = date('Y-m-d H:i:s', strtotime($endDate . ' 23:59:59'));
-            $bills = $this->model->where('user_id', $userId)
-                ->whereBetween('created_at', [$beginDate, $endDate])
-                ->get();
-
-            return $bills;
-    }
-
 
 }
