@@ -82,9 +82,6 @@
                                         <input name='total' type="hidden" value="{{ $totalPrice }}" />
                                         <h5>{{ $totalPrice }} $</h5>
                                     </div>
-                                    <input type="submit" name="update_button" formaction="{{ route('update-cart') }}"
-                                        class="btn btn-outline-dark btn-block btn-lg mb-4" data-mdb-ripple-color="green"
-                                        value='Cập nhật'>
                                     <input type="submit" name="checkout_button" formaction="{{ route('checkout-cart') }}"
                                         class="btn btn-primary btn-block btn-lg" data-mdb-ripple-color="black"
                                         value='Thanh toán'>

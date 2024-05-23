@@ -30,6 +30,7 @@ Route::get('/change-password', [App\Http\Controllers\Auth\ConfirmPasswordControl
 Route::post('/update-password', [App\Http\Controllers\Auth\ConfirmPasswordController::class, 'updatePassword'])->name('update_password');
 Route::resource('user', App\Http\Controllers\Backend\UserController::class);
 Route::resource('course', App\Http\Controllers\Backend\CourseController::class);
+
 Route::prefix('admin')->middleware(['auth', 'is.admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/contact', [App\Http\Controllers\Backend\ContactController::class, 'index'])->name('admin.contact');
